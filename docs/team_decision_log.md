@@ -12,14 +12,14 @@ you like the best.
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | Team meeting schedule | | | | | | |
 |   |	- Sprint Planning Wednesday 1:30pm GMT+7. CST | | | | | | |
-|   |	- Knowledge Xfer as needed |ExpressJs MongoDB, Reatjs, Nextjs, Tailwindcss Shadcn/UI | | | | | |
+|   |	- Knowledge Xfer as needed |ExpressJs MongoDB, Reatjs, Nextjs, Tailwindcss Shadcn/UI ReduxToolkit | | | | | |
 |   |	- Working Session: depends on your free time | | | | | | |
 | 2	| Project Backlog Tool | | | | | | |
 |   |	- Jira | | | | | | |
 | 3	| Technical Stack (vote by adding your pref. in the cell under your name) | | | | | | |
 |   |	- BE Language |ExpressJs MongoDB | | | | | |
 |   |	- FE Language | Reactjs | | | | | |
-|   |	- FE Framework | Nextjs| | | | | |
+|   |	- FE Framework | Nextjs Global State Management:Redux Toolkit| | | | | |
 |   | - CSS Framework |Tailwindcss Shadcn/ui| | | | | |
 |   |	- ML Framework | | | | | | |
 |   |	- Visualization/Graphics package (if required, e.g. D3, Nivo, etc.) | | | | | | |

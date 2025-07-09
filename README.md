@@ -16,7 +16,6 @@ will help whoever is waiting to know what's going on.
 
 In this voyage, your team will design and build a web application, _Surgery Status Board_,
 that will track a patients progress and display it on a monitor in the waiting room.
-## Team Documents
 
 ## Github workflow
 - git pull origin development
@@ -27,6 +26,7 @@ that will track a patients progress and display it on a monitor in the waiting r
 - Create a pull request into development branch
 - Review And Merge the code
   
+ ## Team Documents 
 You may find these helpful as you work together to organize your project.
 
 - [Team Project Ideas](./docs/team_project_ideas.md)

@@ -8,7 +8,7 @@ To set this up add each teammates name in the `teammate name` column. Each
 team member should Place an 'X' under their name to vote for the ideas 
 you like the best.
 
-| No. | Question/Option | Teammate name | Teammate name | Teammate name | Teammate name | Teammate name | Teammate name |
+| No. | Question/Option | VinhQua | Teammate name | Teammate name | Teammate name | Teammate name | Teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | Team meeting schedule | | | | | | |
 |   |	- Sprint Planning Sunday@9:00 a.m. CST | | | | | | |
@@ -19,7 +19,7 @@ you like the best.
 |   |	- Jira | | | | | | |
 | 3	| Technical Stack (vote by adding your pref. in the cell under your name) | | | | | | |
 |   |	- BE Language | | | | | | |
-|   |	- FE Language | | | | | | |
+|   |	- FE Language | Nextjs | | | | | |
 |   |	- FE Framework | | | | | | |
 |   |	- ML Framework | | | | | | |
 |   |	- Visualization/Graphics package (if required, e.g. D3, Nivo, etc.) | | | | | | |

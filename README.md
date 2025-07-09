@@ -1,20 +1,32 @@
-# voyage-tasks
+# voyage-project-surgerystatus
+Chingu Voyage Project - Surgery Center Status Board
+## Overview
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+Welcome, Chingus!
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+It's inevitable that at some point in your life you or a loved one will have to undergo
+some type of surgery - either as an inpatient or an outpatient. In this event you or a
+companion, depending on who's having the surgery, will be in a hospital waiting room while
+the surgery is being performed.
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+It can be quite stressful on the person in the waiting room. But, this can be lessened by
+knowing how the surgery is progressing. Like many other activities there is a workflow
+associated with any medical procedure and knowing what state or phase the surgery is in 
+will help whoever is waiting to know what's going on.
 
-> Own it & Make it your Own!
-
+In this voyage, your team will design and build a web application, _Surgery Status Board_,
+that will track a patients progress and display it on a monitor in the waiting room.
 ## Team Documents
 
+## Github workflow
+- git pull origin development
+- git checkout -b <YOUR OWN BRANCH>
+- git add -A
+- git commit -m 'message'
+- git push origin <YOUR OWN BRANCH>
+- Create a pull request into development branch
+- Review And Merge the code
+  
 You may find these helpful as you work together to organize your project.
 
 - [Team Project Ideas](./docs/team_project_ideas.md)

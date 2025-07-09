@@ -39,6 +39,8 @@ Meeting Agenda templates (located in the `/docs` directory in this repo):
 - Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
 - Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
 
+- [Jira board](https://cestsa.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiZDJkMDg1NjFlMjU2NGVmMDllMDZjZWE2ZTI2YjAxMTEiLCJwIjoiaiJ9)
+
 ## Our Team
 
 Everyone on your team should add their name along with a link to their GitHub

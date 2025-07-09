@@ -1,6 +1,6 @@
 # voyage-project-surgerystatus
 Chingu Voyage Project - Surgery Center Status Board
-https://github.com/chingu-voyages/V56-tier3-team-31/blob/development/README.md
+[https://github.com/chingu-voyages/V56-tier3-team-31/blob/development/README.md](https://github.com/chingu-voyages/voyage-project-surgerystatus)
 ## Overview
 
 Welcome, Chingus!

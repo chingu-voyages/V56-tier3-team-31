@@ -1,5 +1,11 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal, Pencil, Trash } from "lucide-react";
+import {
+  ArrowUpDown,
+  Delete,
+  MoreHorizontal,
+  Pencil,
+  Trash,
+} from "lucide-react";
 
 export const columns: ColumnDef<(typeof data)[number]>[] = [
   {
@@ -151,12 +157,12 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
 
       return (
         <div className="gap-2 flex items-center">
-          <Button variant="secondary" size="icon" className="size-6">
-            <Pencil />
-          </Button>
-          <Button variant="destructive" size="icon" className="size-6">
-            <Trash />
-          </Button>
+          <DialogTrigger asChild>
+            <Button variant="secondary" size="icon" className="size-6">
+              <Pencil />
+            </Button>
+          </DialogTrigger>
+          <DeleteModal />
         </div>
       );
     },
@@ -173,3 +179,5 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { data } from "./mockData";
+import { DialogTrigger } from "@/components/ui/dialog";
+import DeleteModal from "./DeleteModal";

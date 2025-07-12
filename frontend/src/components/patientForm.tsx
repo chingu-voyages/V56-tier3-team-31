@@ -44,6 +44,8 @@ interface PatientFormProps {
 const PatientForm = (props: PatientFormProps) => {
   const { isUpdateStatus, patientId } = props;
 
+  // fetch patient details from db if patientId is provided
+
   return (
     <>
       <div className="grid gap-3">

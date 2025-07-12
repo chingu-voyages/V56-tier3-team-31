@@ -11,6 +11,31 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// need to get from db
+const statuses = [
+  { id: 1, value: "checked-in", name: "Checked In" },
+  { id: 2, value: "pre-procedure", name: "Pre-Procedure" },
+  { id: 3, value: "in-progress", name: "In-progress" },
+  { id: 4, value: "closing", name: "Closing" },
+  { id: 5, value: "recovery", name: "Recovery" },
+  { id: 6, value: "complete", name: "Complete" },
+  { id: 7, value: "dismissal", name: "Dismissal" },
+];
+
+// need to get from db
+const patientDetails = {
+  patientNo: "P001",
+  firstName: "Pedro",
+  lastName: "Duarte",
+  street: "123 Main St",
+  city: "Springfield",
+  state: "IL",
+  country: "USA",
+  telephone: "62701",
+  email: "john@example.com",
+  currentStatusId: 1,
+};
+
 interface PatientFormProps {
   isUpdateStatus: boolean;
   patientId?: string;
@@ -112,18 +137,18 @@ const PatientForm = (props: PatientFormProps) => {
             placeholder="john@example.com"
             disabled={isUpdateStatus}
           /> */}
-          <Select name="currentStatus" disabled={isUpdateStatus}>
+          <Select name="currentStatus" disabled defaultValue="checked-in">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select a status" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Fruits</SelectLabel>
-                <SelectItem value="apple">Apple</SelectItem>
-                <SelectItem value="banana">Banana</SelectItem>
-                <SelectItem value="blueberry">Blueberry</SelectItem>
-                <SelectItem value="grapes">Grapes</SelectItem>
-                <SelectItem value="pineapple">Pineapple</SelectItem>
+                <SelectLabel>Current Status</SelectLabel>
+                {statuses.map((status) => (
+                  <SelectItem key={status.id} value={status.value}>
+                    {status.name}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -138,12 +163,18 @@ const PatientForm = (props: PatientFormProps) => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  <SelectLabel>New Status</SelectLabel>
+                  {statuses
+                    .filter(
+                      (status) =>
+                        status.id === patientDetails.currentStatusId - 1 ||
+                        status.id === patientDetails.currentStatusId + 1
+                    )
+                    .map((status) => (
+                      <SelectItem key={status.id} value={status.value}>
+                        {status.name}
+                      </SelectItem>
+                    ))}
                 </SelectGroup>
               </SelectContent>
             </Select>

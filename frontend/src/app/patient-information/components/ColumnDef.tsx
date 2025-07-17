@@ -148,7 +148,23 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-
+  {
+    accessorKey: "status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <ArrowUpDown />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("status")}</div>
+    ),
+  },
   {
     id: "actions",
     enableHiding: false,

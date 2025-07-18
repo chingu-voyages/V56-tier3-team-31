@@ -11,7 +11,7 @@ you like the best.
 | No. | Question/Option | VinhQua | Teammate name | Teammate name | Teammate name | Teammate name | Teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | Team meeting schedule | | | | | | |
-|   |	- Sprint Planning Wednesday 1:30pm GMT+7. CST | | | | | | |
+|   |	- Sprint Planning Tuesday 1:30pm GMT+7. CST | | | | | | |
 |   |	- Knowledge Xfer as needed |ExpressJs MongoDB, Reatjs, Nextjs, Tailwindcss Shadcn/UI ReduxToolkit | | | | | |
 |   |	- Working Session: depends on your free time | | | | | | |
 | 2	| Project Backlog Tool | | | | | | |

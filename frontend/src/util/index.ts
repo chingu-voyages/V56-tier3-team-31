@@ -1,2 +1,3 @@
+import { customFetch } from "./axios";
 import { patientStatuses } from "./patientStatus";
-export { patientStatuses };
+export { customFetch, patientStatuses };

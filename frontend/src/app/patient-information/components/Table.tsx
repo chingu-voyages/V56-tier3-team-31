@@ -26,9 +26,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { data } from "./mockData";
+import { useAppSelector } from "@/lib/hook";
 
 export default function DataTableDemo() {
+  const { patients } = useAppSelector((store) => store.patients);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -38,7 +39,7 @@ export default function DataTableDemo() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
-    data,
+    data: patients,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -60,15 +61,17 @@ export default function DataTableDemo() {
     <div className="w-full">
       <div className="flex justify-between items-center py-4">
         <Input
-          placeholder="Enter Patient No..."
-          value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
+          placeholder="Enter Patient Last Name..."
+          value={
+            (table.getColumn("lastName")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("id")?.setFilterValue(event.target.value)
+            table.getColumn("lastName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
         {/* NEW Patient Button */}
-        <PatientModal />
+        <PatientModal mode="add" />
       </div>
       <div className="rounded-md border">
         <Table>

@@ -17,7 +17,6 @@ export default function LoginForm() {
 
   return (
     <form action={formAction} className="space-y-3">
-      <h3>Log in</h3>
       <div className="w-full">
         <div>
           <label

@@ -9,13 +9,19 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDisplay = nextUrl.pathname.startsWith(
+      const isOnStatusDisplay = nextUrl.pathname.startsWith(
         "/patient-status-display"
       );
-      if (isOnDisplay) {
+      const isOnStatusUpdate = nextUrl.pathname.startsWith(
+        "/patient-status-update"
+      );
+      const isOnPatientInfo = nextUrl.pathname.startsWith(
+        "/patient-information"
+      );
+      if (isOnStatusUpdate || isOnPatientInfo) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
+      } else if (isLoggedIn && !isOnStatusDisplay) {
         return Response.redirect(new URL("/patient-status-display", nextUrl));
       }
       return true;

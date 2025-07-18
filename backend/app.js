@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 //  routers
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
-
+const patientRouter = require("./routes/patientRoutes");
 // middleware
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
@@ -36,16 +36,31 @@ app.use(
   })
 );
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.Frontend_URL],
+    // methods: "GET,POST,PUT,DELETE,PATCH",
+    // credentials: true,
+    // allowedHeaders: [
+    //   "Origin",
+    //   "X-Requested-With",
+    //   "Content-Type",
+    //   "Accept",
+    //   "X-Access-Token",
+    // ],
+    // preflightContinue: true,
+  })
+);
+
 app.use(xss());
 app.use(mongoSanitize());
 
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
-
+// Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
-
+app.use("/api/v1/patients", patientRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

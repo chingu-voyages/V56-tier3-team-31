@@ -27,9 +27,10 @@ import {
 } from "@/components/ui/table";
 
 import { useAppSelector } from "@/lib/hook";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function DataTableDemo() {
-  const { patients } = useAppSelector((store) => store.patients);
+  const { patients, isLoading } = useAppSelector((store) => store.patients);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -116,7 +117,7 @@ export default function DataTableDemo() {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {isLoading ? <Spinner /> : "No results."}
                 </TableCell>
               </TableRow>
             )}

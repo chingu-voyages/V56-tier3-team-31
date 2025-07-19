@@ -148,7 +148,31 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-
+  {
+    accessorKey: "status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <ArrowUpDown />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const statusId = row.getValue("status");
+      const currentStatus = patientStatuses.find(
+        (status) => status.id === statusId
+      );
+      return (
+        <span className={`${currentStatus?.color} px-2 py-1 rounded`}>
+          {currentStatus?.name}
+        </span>
+      );
+    },
+  },
   {
     id: "actions",
     enableHiding: false,
@@ -157,11 +181,7 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
 
       return (
         <div className="gap-2 flex items-center">
-          <DialogTrigger asChild>
-            <Button variant="secondary" size="icon" className="size-6">
-              <Pencil />
-            </Button>
-          </DialogTrigger>
+          <PatientModal mode="edit" />
           <DeleteModal />
         </div>
       );
@@ -181,3 +201,5 @@ import {
 import { data } from "./mockData";
 import { DialogTrigger } from "@/components/ui/dialog";
 import DeleteModal from "./DeleteModal";
+import PatientModal from "./PatientModal";
+import { patientStatuses } from "@/util";

@@ -10,17 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-// need to get from db
-const statuses = [
-  { id: 1, value: "checked-in", name: "Checked In" },
-  { id: 2, value: "pre-procedure", name: "Pre-Procedure" },
-  { id: 3, value: "in-progress", name: "In-progress" },
-  { id: 4, value: "closing", name: "Closing" },
-  { id: 5, value: "recovery", name: "Recovery" },
-  { id: 6, value: "complete", name: "Complete" },
-  { id: 7, value: "dismissal", name: "Dismissal" },
-];
+import { patientStatuses } from "@/util";
 
 // need to get from db
 const patientDetails = {
@@ -33,7 +23,7 @@ const patientDetails = {
   country: "USA",
   telephone: "62701",
   email: "john@example.com",
-  currentStatusId: 1,
+  currentStatusId: 2,
 };
 
 interface PatientFormProps {
@@ -139,16 +129,26 @@ const PatientForm = (props: PatientFormProps) => {
             placeholder="john@example.com"
             disabled={isUpdateStatus}
           /> */}
-          <Select name="currentStatus" disabled defaultValue="checked-in">
+          <Select
+            name="currentStatus"
+            disabled
+            value={
+              patientStatuses.find(
+                (status) => status.id === patientDetails.currentStatusId
+              )?.value
+            }
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select a status" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Current Status</SelectLabel>
-                {statuses.map((status) => (
+                {patientStatuses.map((status) => (
                   <SelectItem key={status.id} value={status.value}>
-                    {status.name}
+                    <span className={`${status.color} rounded px-2`}>
+                      {status.name}
+                    </span>
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -166,15 +166,21 @@ const PatientForm = (props: PatientFormProps) => {
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>New Status</SelectLabel>
-                  {statuses
+                  {patientStatuses
                     .filter(
                       (status) =>
                         status.id === patientDetails.currentStatusId - 1 ||
                         status.id === patientDetails.currentStatusId + 1
                     )
                     .map((status) => (
-                      <SelectItem key={status.id} value={status.value}>
-                        {status.name}
+                      <SelectItem
+                        color="0 84.2% 60.2%"
+                        key={status.id}
+                        value={status.value}
+                      >
+                        <span className={`${status.color} rounded px-2`}>
+                          {status.name}
+                        </span>
                       </SelectItem>
                     ))}
                 </SelectGroup>

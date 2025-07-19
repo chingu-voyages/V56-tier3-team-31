@@ -44,6 +44,7 @@ async function getUser(email: string): Promise<User | undefined> {
       username: user.username,
       email: user.email,
       password: user.password,
+      role: user.role,
     } as User;
   } catch (error) {
     console.error("Failed to fetch user:", error);

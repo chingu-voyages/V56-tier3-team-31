@@ -15,9 +15,8 @@ import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Trash } from "lucide-react";
 
-const DeleteModal = ({ patientId }: { patientId: string }) => {
+const DeleteModal = ({ patient }: { patient: any }) => {
   const { isLoading } = useAppSelector((state) => state.singlePatient);
-  console.log("patientId", patientId);
 
   const dispatch = useAppDispatch();
   if (isLoading) {
@@ -26,7 +25,7 @@ const DeleteModal = ({ patientId }: { patientId: string }) => {
   return (
     <Dialog>
       <form>
-        <DialogTrigger>
+        <DialogTrigger onClick={() => console.log(patient._id)}>
           {/* <Button variant="destructive" size="sm"> */}
           <Trash className="text-red-500 hover:cursor-pointer" />
           {/* </Button> */}
@@ -46,9 +45,9 @@ const DeleteModal = ({ patientId }: { patientId: string }) => {
             <Button
               disabled={isLoading}
               onClick={() => {
-                console.log("Deleting patient with ID:", patientId);
+                console.log("Deleting patient with ID:", patient._id);
 
-                dispatch(deletePatient(patientId));
+                dispatch(deletePatient(patient._id));
               }}
               variant="destructive"
             >

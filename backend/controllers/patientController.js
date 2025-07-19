@@ -63,7 +63,7 @@ const deletePatient = async (req, res) => {
     throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);
   }
 
-  await Patient.remove();
+  await Patient.deleteOne({ _id: patientId });
   res.status(StatusCodes.OK).json({ msg: "Success! Patient removed." });
 };
 

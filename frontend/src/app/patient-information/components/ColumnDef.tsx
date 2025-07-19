@@ -182,7 +182,7 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
       return (
         <div className="gap-2 flex items-center">
           <PatientModal mode="edit" patient={data} />
-          <DeleteModal patientId={data?._id} />
+          <DeleteModal patient={data} />
         </div>
       );
     },

@@ -177,12 +177,12 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const data = row.original;
 
       return (
         <div className="gap-2 flex items-center">
-          <PatientModal mode="edit" />
-          <DeleteModal />
+          <PatientModal mode="edit" patient={data} />
+          <DeleteModal patientId={data?._id} />
         </div>
       );
     },

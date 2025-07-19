@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import patientSlice from "./features/patients/patientSlice";
+import singlePatientSlice from "./features/singlePatient/singlePatientSlice";
 export const makeStore = () => {
   return configureStore({
     reducer: {
       patients: patientSlice,
+      singlePatient: singlePatientSlice,
     },
   });
 };

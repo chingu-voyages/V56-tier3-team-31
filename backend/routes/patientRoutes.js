@@ -14,18 +14,13 @@ const {
   deletePatient,
 } = require("../controllers/patientController");
 
-router
-  .route("/")
-  .post([authenticateUser], authorizePermissions("admin"), createPatient)
-  .get(getAllPatients);
-router
-  .route("/updatePatientStatus")
-  .post([authenticateUser], updatePatientStatus);
+router.route("/").post(createPatient).get(getAllPatients);
+router.route("/updatePatientStatus").post(updatePatientStatus);
 
 router
   .route("/:id")
   .get(authenticateUser, getSinglePatient)
-  .patch([authenticateUser, authorizePermissions("admin")], updatePatient)
-  .delete([authenticateUser, authorizePermissions("admin")], deletePatient);
+  .patch(updatePatient)
+  .delete(deletePatient);
 
 module.exports = router;

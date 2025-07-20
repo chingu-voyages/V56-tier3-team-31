@@ -33,8 +33,8 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 type modeType = "edit" | "add";
 export type PatientType = {
-  _id: string;
-  no: string;
+  _id?: string;
+  no?: string;
   firstName: string;
   lastName: string;
   street: string;
@@ -43,7 +43,7 @@ export type PatientType = {
   country: string;
   telephone: string;
   email: string;
-  status: number;
+  status?: number;
 };
 export default function PatientModal({
   mode,

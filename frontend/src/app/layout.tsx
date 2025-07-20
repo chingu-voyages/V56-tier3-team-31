@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
   subsets: ["latin"],
-  preload: false,
 });
 
-const roboto = Roboto({
-  variable: "--font-roboto",
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -30,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto.variable} antialiased`}>
+      <body className={`${geist.className} ${geistMono.className} antialiased`}>
         <Toaster />
         <StoreProvider>
           <Header />

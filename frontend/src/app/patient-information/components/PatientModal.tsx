@@ -120,9 +120,9 @@ export default function PatientModal({
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px] md:max-w-[600px] lg:max-w-[800px] xl:max-w-[1000px]">
           <DialogHeader>
-            <DialogTitle>New patient's profile</DialogTitle>
+            <DialogTitle>New patient&apos;s profile</DialogTitle>
             <DialogDescription>
-              Make changes to patient's profile here. Click save when
+              Make changes to patient&apos;s profile here. Click save when
               you&apos;re done.
             </DialogDescription>
           </DialogHeader>

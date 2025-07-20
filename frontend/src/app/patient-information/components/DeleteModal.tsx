@@ -35,7 +35,7 @@ const DeleteModal = ({ patient }: { patient: { _id: string } }) => {
             <DialogTitle>Are you absolutely sure?</DialogTitle>
             <DialogDescription>
               This action cannot be undone. This will permanently delete
-              patient's profile and all associated data.
+              patient&apos;s profile and all associated data.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

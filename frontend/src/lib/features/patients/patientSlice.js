@@ -14,7 +14,7 @@ export const patientSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllPatients.pending, (state, { payload }) => {
+    builder.addCase(getAllPatients.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(getAllPatients.fulfilled, (state, { payload }) => {

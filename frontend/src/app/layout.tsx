@@ -8,11 +8,13 @@ import Header from "@/components/header";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false, // Disable preloading to avoid issues with Next.js 14
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false, // Disable preloading to avoid issues with Next.js 14
 });
 
 export const metadata: Metadata = {

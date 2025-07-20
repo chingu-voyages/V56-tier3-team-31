@@ -14,8 +14,9 @@ import { deletePatient } from "@/lib/features/singlePatient/singlePatientSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Trash } from "lucide-react";
+import { PatientType } from "./PatientModal";
 
-const DeleteModal = ({ patient }: { patient: { _id: string } }) => {
+const DeleteModal = ({ patient }: { patient: PatientType }) => {
   const { isLoading } = useAppSelector((state) => state.singlePatient);
 
   const dispatch = useAppDispatch();

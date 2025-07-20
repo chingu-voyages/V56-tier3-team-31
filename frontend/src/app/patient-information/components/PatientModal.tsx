@@ -30,15 +30,27 @@ import {
   handlePatientInput,
   updatePatient,
 } from "@/lib/features/singlePatient/singlePatientSlice";
-import { useEffect } from "react";
 import { Spinner } from "@/components/ui/spinner";
 type modeType = "edit" | "add";
+export type PatientType = {
+  _id: string;
+  no: string;
+  firstName: string;
+  lastName: string;
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  telephone: string;
+  email: string;
+  status: number;
+};
 export default function PatientModal({
   mode,
   patient,
 }: {
   mode: modeType;
-  patient?: any;
+  patient?: PatientType;
 }) {
   const {
     isLoading,

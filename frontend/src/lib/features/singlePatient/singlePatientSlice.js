@@ -71,7 +71,7 @@ export const singlePatientSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(createPatient.pending, (state, { payload }) => {
+    builder.addCase(createPatient.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(createPatient.fulfilled, (state, { payload }) => {
@@ -84,7 +84,7 @@ export const singlePatientSlice = createSlice({
       state.isLoading = false;
       toast(payload || "Error occured. Please Try Again");
     });
-    builder.addCase(updatePatient.pending, (state, { payload }) => {
+    builder.addCase(updatePatient.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(updatePatient.fulfilled, (state, { payload }) => {
@@ -97,7 +97,7 @@ export const singlePatientSlice = createSlice({
       state.isLoading = false;
       toast(payload || "Error occured. Please Try Again");
     });
-    builder.addCase(deletePatient.pending, (state, { payload }) => {
+    builder.addCase(deletePatient.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(deletePatient.fulfilled, (state, { payload }) => {

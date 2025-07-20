@@ -134,7 +134,6 @@ export default function PatientModal({
             <div className="grid gap-3">
               <Label htmlFor="username-1">First Name</Label>
               <Input
-                required={true}
                 onChange={handleChange}
                 id="username-1"
                 name="firstName"
@@ -145,7 +144,6 @@ export default function PatientModal({
               <Label htmlFor="username-2">Last Name</Label>
 
               <Input
-                required={true}
                 onChange={handleChange}
                 id="username-2"
                 name="lastName"

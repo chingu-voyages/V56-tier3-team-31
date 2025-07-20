@@ -37,12 +37,12 @@ export type PatientType = {
   no?: string;
   firstName: string;
   lastName: string;
-  street: string;
-  city: string;
-  state: string;
-  country: string;
-  telephone: string;
-  email: string;
+  street: string | null;
+  city: string | null;
+  state: string | null;
+  country: string | null;
+  telephone: string | null;
+  email: string | null;
   status?: number;
 };
 export default function PatientModal({

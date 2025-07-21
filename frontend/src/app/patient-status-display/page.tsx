@@ -4,7 +4,7 @@ import { Table } from "./components";
 import React, { useEffect } from "react";
 import { displayPatientStatus } from "@/lib/features/patients/patientSlice";
 
-export default function page() {
+export default function Page() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(displayPatientStatus({}));

@@ -64,7 +64,7 @@ export default function DisplayStatusTable() {
   });
   // Auto-pagination logic to change page every 20 seconds
   React.useEffect(() => {
-    let intervalId: any;
+    let intervalId: NodeJS.Timeout;
     if (pagination.pageIndex <= table.getPageCount() - 1) {
       intervalId = setInterval(() => {
         setPagination((prev) => ({

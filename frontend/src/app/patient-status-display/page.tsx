@@ -1,7 +1,19 @@
-import React from "react";
+"use client";
+import { useAppDispatch } from "@/lib/hook";
+import { Table } from "./components";
+import React, { use, useEffect } from "react";
+import { displayPatientStatus } from "@/lib/features/patients/patientSlice";
 
 const page = () => {
-  return <div>This is patient status display screen</div>;
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(displayPatientStatus({}));
+  }, []);
+  return (
+    <div className="container mx-auto p-4">
+      <Table />
+    </div>
+  );
 };
 
 export default page;

@@ -66,8 +66,16 @@ const deletePatient = async (req, res) => {
   await Patient.deleteOne({ _id: patientId });
   res.status(StatusCodes.OK).json({ msg: "Success! Patient removed." });
 };
+const displayPatientStatus = async (req, res) => {
+  const patients = await Patient.find({ status: [1, 2, 3, 4, 5, 6] }).select(
+    "firstName lastName status no id"
+  );
+  patients.sort((a, b) => a.status - b.status);
 
+  res.status(StatusCodes.OK).json({ patients });
+};
 module.exports = {
+  displayPatientStatus,
   updatePatientStatus,
   getAllPatients,
   getSinglePatient,

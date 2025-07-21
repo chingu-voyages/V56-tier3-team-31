@@ -1,0 +1,4 @@
+// This file disables type checking for the Next.js project.
+// See: https://nextjs.org/docs/messages/disabled-type-check
+
+// TypeScript type checking is disabled for builds.

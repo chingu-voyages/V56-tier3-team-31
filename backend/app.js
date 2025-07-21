@@ -40,7 +40,7 @@ app.use(
   cors({
     origin: [process.env.Frontend_URL],
     // methods: "GET,POST,PUT,DELETE,PATCH",
-    // credentials: true,
+    credentials: true,
     // allowedHeaders: [
     //   "Origin",
     //   "X-Requested-With",

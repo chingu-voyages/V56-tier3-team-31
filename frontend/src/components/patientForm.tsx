@@ -32,7 +32,7 @@ interface PatientFormProps {
 }
 
 const PatientForm = (props: PatientFormProps) => {
-  const { isUpdateStatus, patientId } = props;
+  const { isUpdateStatus } = props;
 
   // fetch patient details from db if patientId is provided
 

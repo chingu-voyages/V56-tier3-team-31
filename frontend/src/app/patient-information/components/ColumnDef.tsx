@@ -1,12 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  ArrowUpDown,
-  Delete,
-  MoreHorizontal,
-  Pencil,
-  Trash,
-} from "lucide-react";
-
+import { ArrowUpDown } from "lucide-react";
 export const columns: ColumnDef<(typeof data)[number]>[] = [
   {
     id: "select",
@@ -177,12 +170,12 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const data = row.original;
 
       return (
         <div className="gap-2 flex items-center">
-          <PatientModal mode="edit" />
-          <DeleteModal />
+          <PatientModal mode="edit" patient={data} />
+          <DeleteModal patient={data} />
         </div>
       );
     },
@@ -190,16 +183,7 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
 ];
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 import { data } from "./mockData";
-import { DialogTrigger } from "@/components/ui/dialog";
 import DeleteModal from "./DeleteModal";
 import PatientModal from "./PatientModal";
 import { patientStatuses } from "@/util";

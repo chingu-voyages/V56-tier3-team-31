@@ -1,10 +1,10 @@
 "use client";
 import { useAppDispatch } from "@/lib/hook";
 import { Table } from "./components";
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import { displayPatientStatus } from "@/lib/features/patients/patientSlice";
 
-const page = () => {
+export default function page() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(displayPatientStatus({}));
@@ -14,6 +14,4 @@ const page = () => {
       <Table />
     </div>
   );
-};
-
-export default page;
+}

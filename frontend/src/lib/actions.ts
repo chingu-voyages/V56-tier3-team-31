@@ -8,12 +8,6 @@ export async function authenticate(
   formData: FormData
 ) {
   console.log("from actions.ts - ", formData);
-  const credentials = {
-    email: formData.get("email"),
-    password: formData.get("password"),
-    redirectTo: formData.get("redirectTo"),
-  };
-  console.log("from actions.ts - credentials: ", credentials);
 
   try {
     await signIn("credentials", formData);

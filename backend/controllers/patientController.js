@@ -14,7 +14,7 @@ const getAllPatients = async (req, res) => {
 const getSinglePatient = async (req, res) => {
   const { id: patientId } = req.params;
 
-  const patient = await Patient.findOne({ _id: patientId });
+  const patient = await Patient.findOne({ no: patientId });
 
   if (!patient) {
     throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);

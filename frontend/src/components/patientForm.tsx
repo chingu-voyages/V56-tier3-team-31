@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { patientStatuses } from "@/util";
+import StatusSelect from "./statusSelect";
 
 interface PatientFormProps {
   isUpdateStatus: boolean;
@@ -172,7 +173,7 @@ const PatientForm = (props: PatientFormProps) => {
         {isUpdateStatus && (
           <div className="grid gap-3">
             <Label htmlFor="newStatus">New Status</Label>
-            <Select name="newStatus" required={isUpdateStatus}>
+            {/* <Select name="newStatus" required={isUpdateStatus} defaultValue="">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a status" />
               </SelectTrigger>
@@ -199,7 +200,8 @@ const PatientForm = (props: PatientFormProps) => {
                       ))}
                 </SelectGroup>
               </SelectContent>
-            </Select>
+            </Select> */}
+            <StatusSelect currentStatusId={patientInfo?.status} />
           </div>
         )}
       </div>

@@ -3,6 +3,8 @@
 import { signIn } from "@/auth";
 import { patientStatuses } from "@/util";
 import { AuthError } from "next-auth";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -64,9 +66,12 @@ export async function updatePatientStatus(
       throw new Error("Failed to update patient");
     }
 
-    return await response.json();
+    // return await response.json();
   } catch (error) {
     console.error("Error updating patient status:", error);
     throw new Error("Failed to update patient status.");
   }
+
+  revalidatePath("/patient-status-update");
+  redirect(`/patient-status-update?patientNo=${patientNumber}`);
 }

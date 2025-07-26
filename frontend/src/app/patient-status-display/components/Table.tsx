@@ -70,7 +70,7 @@ export default function DisplayStatusTable() {
         pageIndex: (prev.pageIndex + 1) % table.getPageCount(),
         pageSize: prev.pageSize,
       }));
-    }, 20000);
+    }, 2000);
 
     // Cleanup function to clear the timeout when the component unmounts
     return () => clearInterval(intervalId);

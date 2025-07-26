@@ -5,6 +5,7 @@ const { io } = require("../lib/socket");
 
 const createPatient = async (req, res) => {
   const patient = await Patient.create(req.body);
+  io.emit("addPatientStatus", patient);
   res.status(StatusCodes.CREATED).json({ patient });
 };
 const getAllPatients = async (req, res) => {
@@ -52,6 +53,7 @@ const updatePatientStatus = async (req, res) => {
   if (!patient) {
     throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);
   }
+  if (status === 7) return; //Do nothing when patient status is dimissal
   io.emit("updatePatientStatus", patient);
 
   res.status(StatusCodes.OK).json({ patient });

@@ -29,6 +29,12 @@ export const patientSlice = createSlice({
       state.displayPatientStatus = newDisplay || [];
       toast("Patient Status Board Updated");
     },
+    addPaitentToStatusBoard: (state, { payload }) => {
+      const newDisplay = [...state.displayPatientStatus, payload];
+
+      state.displayPatientStatus = newDisplay || [];
+      toast("Patient Status Board Updated");
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllPatients.pending, (state) => {
@@ -59,6 +65,7 @@ export const patientSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updatePaitentStatusBoard } = patientSlice.actions;
+export const { updatePaitentStatusBoard, addPaitentToStatusBoard } =
+  patientSlice.actions;
 
 export default patientSlice.reducer;

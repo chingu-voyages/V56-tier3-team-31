@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-console.log(process.env.Frontend_URL);
 
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
@@ -24,6 +23,9 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
+  socket.on("disconnect", () => {
+    console.log("a user disconnected", socket.id);
+  });
 });
 
 module.exports = { app, server, io };

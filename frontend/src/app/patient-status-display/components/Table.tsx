@@ -64,24 +64,17 @@ export default function DisplayStatusTable() {
   });
   // Auto-pagination logic to change page every 20 seconds
   React.useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-    if (pagination.pageIndex <= table.getPageCount() - 1) {
-      intervalId = setInterval(() => {
-        setPagination((prev) => ({
-          pageIndex: prev.pageIndex + 1,
-          pageSize: prev.pageSize,
-        }));
-      }, 20000);
-    } else {
+    if (table.getPageCount() <= 1) return;
+    const intervalId = setInterval(() => {
       setPagination((prev) => ({
-        pageIndex: 0,
+        pageIndex: (prev.pageIndex + 1) % table.getPageCount(),
         pageSize: prev.pageSize,
       }));
-    }
+    }, 20000);
 
     // Cleanup function to clear the timeout when the component unmounts
     return () => clearInterval(intervalId);
-  }, [pagination]); // Empty dependency array means this effect runs once on mount
+  }, [table.getPageCount()]);
   return (
     <div className="w-full">
       <div className="rounded-md transition-all border">

@@ -17,7 +17,19 @@ export const displayPatientStatus = createAsyncThunk(
 export const patientSlice = createSlice({
   name: "patients",
   initialState,
-  reducers: {},
+  reducers: {
+    updatePaitentStatusBoard: (state, { payload }) => {
+      const newDisplay = state.displayPatientStatus.map((patient) => {
+        if (patient.id === payload.id) {
+          return payload;
+        } else {
+          return patient;
+        }
+      });
+      state.displayPatientStatus = newDisplay || [];
+      toast("Patient Status Board Updated");
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllPatients.pending, (state) => {
       state.isLoading = true;
@@ -47,6 +59,6 @@ export const patientSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {} = patientSlice.actions;
+export const { updatePaitentStatusBoard } = patientSlice.actions;
 
 export default patientSlice.reducer;

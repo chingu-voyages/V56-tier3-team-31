@@ -1,6 +1,7 @@
 const Patient = require("../models/Patient");
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
+const { io } = require("../lib/socket");
 
 const createPatient = async (req, res) => {
   const patient = await Patient.create(req.body);
@@ -51,6 +52,7 @@ const updatePatientStatus = async (req, res) => {
   if (!patient) {
     throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);
   }
+  io.emit("updatePatientStatus", patient);
 
   res.status(StatusCodes.OK).json({ patient });
 };

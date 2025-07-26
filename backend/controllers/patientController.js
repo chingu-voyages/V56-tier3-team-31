@@ -17,7 +17,7 @@ const getSinglePatient = async (req, res) => {
   const patient = await Patient.findOne({ no: patientId });
 
   if (!patient) {
-    throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);
+    throw new CustomError.NotFoundError(`No Patient with patient number : ${patientId}`);
   }
 
   res.status(StatusCodes.OK).json({ patient });
@@ -40,7 +40,7 @@ const updatePatientStatus = async (req, res) => {
   const { id: patientId } = req.params;
   const { status } = req.body;
   const patient = await Patient.findOneAndUpdate(
-    { _id: patientId },
+    { no: patientId },
     { status },
     {
       new: true,
@@ -49,7 +49,7 @@ const updatePatientStatus = async (req, res) => {
   );
 
   if (!patient) {
-    throw new CustomError.NotFoundError(`No Patient with id : ${patientId}`);
+    throw new CustomError.NotFoundError(`No Patient with patient number : ${patientId}`);
   }
 
   res.status(StatusCodes.OK).json({ patient });

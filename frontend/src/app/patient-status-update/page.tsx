@@ -3,6 +3,7 @@ import PatientSearchForm from "@/components/patientSearchForm";
 import PatientForm from "@/components/patientForm";
 import { Button } from "@/components/ui/button";
 import { headers } from "next/headers";
+import { updatePatientStatus } from "@/lib/actions";
 
 const PatientStatusUpdatePage = async (props: {
   searchParams?: Promise<{
@@ -48,11 +49,11 @@ const PatientStatusUpdatePage = async (props: {
 
       <h2 className="text-2xl font-bold mt-6 mb-4">Patient Found:</h2>
 
-      <form>
+      <form action={updatePatientStatus}>
         <PatientForm isUpdateStatus={true} patientInfo={patientInfo} />
         <div className="flex justify-end space-x-2 mt-8">
-          <Button variant="outline">Cancel</Button>
-          <Button type="submit">Save changes</Button>
+          {/* <Button variant="outline">Cancel</Button> */}
+          <Button type="submit">Save Changes</Button>
         </div>
       </form>
     </div>

@@ -34,6 +34,14 @@ const PatientForm = (props: PatientFormProps) => {
 
   return (
     <>
+      {isUpdateStatus && patientInfo?.no && (
+        <input
+          type="hidden"
+          name="patientNoForFormData"
+          value={patientInfo.no}
+        />
+      )}
+
       <div className="grid gap-3">
         <Label htmlFor="name-1">Patient No.</Label>
         <Input
@@ -131,7 +139,7 @@ const PatientForm = (props: PatientFormProps) => {
 
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="grid gap-3">
-          <Label htmlFor="email-1">Current Status</Label>
+          <Label htmlFor="currentStatus">Current Status</Label>
           <Select
             name="currentStatus"
             disabled
@@ -163,8 +171,8 @@ const PatientForm = (props: PatientFormProps) => {
 
         {isUpdateStatus && (
           <div className="grid gap-3">
-            <Label htmlFor="email-1">New Status</Label>
-            <Select name="newStatus">
+            <Label htmlFor="newStatus">New Status</Label>
+            <Select name="newStatus" required={isUpdateStatus}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a status" />
               </SelectTrigger>

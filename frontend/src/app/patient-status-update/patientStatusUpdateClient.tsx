@@ -5,7 +5,7 @@ import PatientSearchForm from "@/components/patientSearchForm";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { updatePatientStatus } from "@/lib/actions";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useActionState, useEffect, useRef, useState } from "react";
 
 interface PatientStatusUpdateClientProps {
   patientNoFromURL: string;
@@ -19,6 +19,9 @@ const PatientStatusUpdateClient = ({
   const [error, setError] = useState<string | null>(null);
 
   const initialLoadDone = useRef(false);
+
+  const [updateErrorMessage, updateFormAction, isUpdatePending] =
+    useActionState(updatePatientStatus, undefined);
 
   const handleSearch = async (patientNo: string) => {
     if (!patientNo) return;
@@ -65,10 +68,15 @@ const PatientStatusUpdateClient = ({
         <>
           <h2 className="text-2xl font-bold mt-6 mb-4">Patient Found:</h2>
 
-          <form action={updatePatientStatus}>
+          <form action={updateFormAction}>
             <PatientForm isUpdateStatus={true} patientInfo={patientInfo} />
+            {updateErrorMessage && (
+              <p className="text-sm text-red-500 mt-4">{updateErrorMessage}</p>
+            )}
             <div className="flex justify-end space-x-2 mt-8">
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit" disabled={isUpdatePending}>
+                Save Changes
+              </Button>
             </div>
           </form>
         </>

@@ -30,7 +30,7 @@ export async function authenticate(
 }
 
 export async function updatePatientStatus(
-  // prevState: string | undefined,
+  prevState: string | undefined,
   formData: FormData
 ) {
   console.log("from actions.ts - updatePatientStatus - formData:", formData);
@@ -38,7 +38,8 @@ export async function updatePatientStatus(
   const newStatusValue = formData.get("newStatus");
 
   if (!patientNumber || !newStatusValue) {
-    throw new Error("Missing form data");
+    // throw new Error("Missing form data");
+    return "Missing form data";
   }
 
   const newStatus = patientStatuses.find(
@@ -46,7 +47,8 @@ export async function updatePatientStatus(
   )?.id;
 
   if (!newStatus) {
-    throw new Error(`Unknown status: ${newStatusValue}`);
+    // throw new Error(`Unknown status: ${newStatusValue}`);
+    return `Unknown status: ${newStatusValue}`;
   }
 
   try {
@@ -63,13 +65,16 @@ export async function updatePatientStatus(
 
     if (!response.ok) {
       console.error(await response.text());
-      throw new Error("Failed to update patient");
+      // throw new Error("Failed to update patient");
+      return "Failed to update patient";
     }
 
     // return await response.json();
+    // return undefined; // success, no error
   } catch (error) {
     console.error("Error updating patient status:", error);
-    throw new Error("Failed to update patient status.");
+    // throw new Error("Failed to update patient status.");
+    return "Failed to update patient status.";
   }
 
   revalidatePath("/patient-status-update");

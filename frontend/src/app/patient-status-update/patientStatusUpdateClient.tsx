@@ -5,7 +5,7 @@ import PatientSearchForm from "@/components/patientSearchForm";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { updatePatientStatus } from "@/lib/actions";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface PatientStatusUpdateClientProps {
   patientNoFromURL: string;
@@ -18,7 +18,11 @@ const PatientStatusUpdateClient = ({
   const [patientInfo, setPatientInfo] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const initialLoadDone = useRef(false);
+
   const handleSearch = async (patientNo: string) => {
+    if (!patientNo) return;
+
     setLoading(true);
     setError(null);
     setPatientInfo(null);
@@ -44,18 +48,16 @@ const PatientStatusUpdateClient = ({
     }
   };
 
-  // useEffect(() => {
-  //   if (patientNoFromURL) {
-  //     handleSearch(patientNoFromURL);
-  //   }
-  // }, [patientNoFromURL]);
+  useEffect(() => {
+    if (!initialLoadDone.current && patientNoFromURL) {
+      initialLoadDone.current = true;
+      handleSearch(patientNoFromURL);
+    }
+  }, [patientNoFromURL]);
 
   return (
     <>
-      <PatientSearchForm
-        onSearch={handleSearch}
-        loading={loading}
-      />
+      <PatientSearchForm onSearch={handleSearch} loading={loading} />
 
       {loading && <Spinner className="mt-4" />}
       {error && <div className="text-red-500 mt-4">{error}</div>}

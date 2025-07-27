@@ -1,0 +1,78 @@
+"use client";
+
+import PatientForm from "@/components/patientForm";
+import PatientSearchForm from "@/components/patientSearchForm";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { updatePatientStatus } from "@/lib/actions";
+import React, { useEffect, useState } from "react";
+
+interface PatientStatusUpdateClientProps {
+  patientNoFromURL: string;
+}
+
+const PatientStatusUpdateClient = ({
+  patientNoFromURL,
+}: PatientStatusUpdateClientProps) => {
+  const [loading, setLoading] = useState(false);
+  const [patientInfo, setPatientInfo] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSearch = async (patientNo: string) => {
+    setLoading(true);
+    setError(null);
+    setPatientInfo(null);
+
+    try {
+      const response = await fetch(`/api/patients/${patientNo}`, {
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        setError(`Failed to fetch patient data: ${errorText}`);
+        return;
+      }
+
+      const data = await response.json();
+      setPatientInfo(data.patient);
+    } catch (error) {
+      console.error("Error fetching patient data:", error);
+      setError("Failed to fetch patient data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (patientNoFromURL) {
+  //     handleSearch(patientNoFromURL);
+  //   }
+  // }, [patientNoFromURL]);
+
+  return (
+    <>
+      <PatientSearchForm
+        onSearch={handleSearch}
+        loading={loading}
+      />
+
+      {loading && <Spinner className="mt-4" />}
+      {error && <div className="text-red-500 mt-4">{error}</div>}
+      {patientInfo && !loading && !error && (
+        <>
+          <h2 className="text-2xl font-bold mt-6 mb-4">Patient Found:</h2>
+
+          <form action={updatePatientStatus}>
+            <PatientForm isUpdateStatus={true} patientInfo={patientInfo} />
+            <div className="flex justify-end space-x-2 mt-8">
+              <Button type="submit">Save Changes</Button>
+            </div>
+          </form>
+        </>
+      )}
+    </>
+  );
+};
+
+export default PatientStatusUpdateClient;

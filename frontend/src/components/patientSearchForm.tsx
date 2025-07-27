@@ -7,7 +7,12 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const PatientSearchForm = () => {
+interface PatientSearchFormProps {
+  onSearch: (patientNo: string) => void;
+  loading: boolean;
+}
+
+const PatientSearchForm = ({ onSearch, loading }: PatientSearchFormProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -33,6 +38,7 @@ const PatientSearchForm = () => {
         const formData = new FormData(e.currentTarget);
         const patientNo = formData.get("name") as string;
         handleURL(patientNo);
+        onSearch(patientNo);
       }}
     >
       <div className="grid gap-3 w-full">
@@ -45,8 +51,12 @@ const PatientSearchForm = () => {
           required
         />
       </div>
-      <Button type="submit" className="self-end mt-4 sm:mt-0">
-        Search Patient
+      <Button
+        type="submit"
+        className="self-end mt-4 sm:mt-0"
+        disabled={loading}
+      >
+        {loading ? "Searching..." : "Search Patient"}
       </Button>
     </form>
   );

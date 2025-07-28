@@ -11,36 +11,47 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { patientStatuses } from "@/util";
-
-// need to get from db
-const patientDetails = {
-  patientNo: "P001",
-  firstName: "Pedro",
-  lastName: "Duarte",
-  street: "123 Main St",
-  city: "Springfield",
-  state: "IL",
-  country: "USA",
-  telephone: "62701",
-  email: "john@example.com",
-  currentStatusId: 2,
-};
+import StatusSelect from "./statusSelect";
 
 interface PatientFormProps {
   isUpdateStatus: boolean;
   patientId?: string;
+  patientInfo?: {
+    no: string;
+    firstName: string;
+    lastName: string;
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+    telephone: string;
+    email: string;
+    status: number;
+  };
 }
 
 const PatientForm = (props: PatientFormProps) => {
-  const { isUpdateStatus } = props;
-
-  // fetch patient details from db if patientId is provided
+  const { isUpdateStatus, patientInfo } = props;
 
   return (
     <>
+      {isUpdateStatus && patientInfo?.no && (
+        <input
+          type="hidden"
+          name="patientNoForFormData"
+          value={patientInfo.no}
+        />
+      )}
+
       <div className="grid gap-3">
         <Label htmlFor="name-1">Patient No.</Label>
-        <Input disabled id="name-1" name="name" defaultValue="P001" />
+        <Input
+          disabled
+          id="name-1"
+          name="name"
+          placeholder="AA1234"
+          defaultValue={patientInfo?.no || "-"}
+        />
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
@@ -50,6 +61,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="username-1"
             name="firstName"
             placeholder="Pedro"
+            defaultValue={patientInfo?.firstName || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -59,6 +71,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="username-2"
             name="lastName"
             placeholder="Duarte"
+            defaultValue={patientInfo?.lastName || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -68,6 +81,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="street-1"
             name="street"
             placeholder="123 Main St"
+            defaultValue={patientInfo?.street || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -77,6 +91,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="city-1"
             name="city"
             placeholder="Springfield"
+            defaultValue={patientInfo?.city || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -86,6 +101,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="state-1"
             name="state"
             placeholder="IL"
+            defaultValue={patientInfo?.state || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -95,6 +111,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="country-1"
             name="country"
             placeholder="USA"
+            defaultValue={patientInfo?.country || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -104,6 +121,7 @@ const PatientForm = (props: PatientFormProps) => {
             id="telephone-1"
             name="telephone"
             placeholder="62701"
+            defaultValue={patientInfo?.telephone || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -114,6 +132,7 @@ const PatientForm = (props: PatientFormProps) => {
             name="email"
             type="email"
             placeholder="john@example.com"
+            defaultValue={patientInfo?.email || "-"}
             disabled={isUpdateStatus}
           />
         </div>
@@ -121,21 +140,16 @@ const PatientForm = (props: PatientFormProps) => {
 
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="grid gap-3">
-          <Label htmlFor="email-1">Current Status</Label>
-          {/* <Input
-            id="currentStatus"
-            name="currentStatus"
-            type="currentStatus"
-            placeholder="john@example.com"
-            disabled={isUpdateStatus}
-          /> */}
+          <Label htmlFor="currentStatus">Current Status</Label>
           <Select
             name="currentStatus"
             disabled
             value={
-              patientStatuses.find(
-                (status) => status.id === patientDetails.currentStatusId
-              )?.value
+              patientInfo?.status
+                ? patientStatuses.find(
+                    (status) => status.id === patientInfo.status
+                  )?.value
+                : "checked-in"
             }
           >
             <SelectTrigger className="w-full">
@@ -158,34 +172,36 @@ const PatientForm = (props: PatientFormProps) => {
 
         {isUpdateStatus && (
           <div className="grid gap-3">
-            <Label htmlFor="email-1">New Status</Label>
-            <Select name="newStatus">
+            <Label htmlFor="newStatus">New Status</Label>
+            {/* <Select name="newStatus" required={isUpdateStatus} defaultValue="">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a status" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>New Status</SelectLabel>
-                  {patientStatuses
-                    .filter(
-                      (status) =>
-                        status.id === patientDetails.currentStatusId - 1 ||
-                        status.id === patientDetails.currentStatusId + 1
-                    )
-                    .map((status) => (
-                      <SelectItem
-                        color="0 84.2% 60.2%"
-                        key={status.id}
-                        value={status.value}
-                      >
-                        <span className={`${status.color} rounded px-2`}>
-                          {status.name}
-                        </span>
-                      </SelectItem>
-                    ))}
+                  {patientInfo?.status &&
+                    patientStatuses
+                      .filter(
+                        (status) =>
+                          status.id === patientInfo.status - 1 ||
+                          status.id === patientInfo.status + 1
+                      )
+                      .map((status) => (
+                        <SelectItem
+                          color="0 84.2% 60.2%"
+                          key={status.id}
+                          value={status.value}
+                        >
+                          <span className={`${status.color} rounded px-2`}>
+                            {status.name}
+                          </span>
+                        </SelectItem>
+                      ))}
                 </SelectGroup>
               </SelectContent>
-            </Select>
+            </Select> */}
+            <StatusSelect currentStatusId={patientInfo?.status} />
           </div>
         )}
       </div>

@@ -17,7 +17,7 @@ const {
 
 router.route("/").post(createPatient).get(getAllPatients);
 router.route("/displayPatientStatus").get(displayPatientStatus);
-router.route("/updatePatientStatus").post(updatePatientStatus);
+router.route("/updatePatientStatus/:id").patch(updatePatientStatus);
 
 router
   .route("/:id")

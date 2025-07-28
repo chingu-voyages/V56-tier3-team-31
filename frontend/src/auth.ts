@@ -1,7 +1,7 @@
 // This is for password hashing using the library bcrypt - middleware doesn't handle bcrypt, so we need to have this separately.
 
 import NextAuth from "next-auth";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
+// import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import client from "./lib/db";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
@@ -11,24 +11,11 @@ import bcrypt from "bcrypt";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    console.log("getUser called with email:", email);
-
-    // Check if client is connected
-    console.log("Database client state:", client.topology?.isConnected());
-
     const db = client.db("Surgery-Status");
-    console.log("Database name:", db.databaseName);
-
     const users = db.collection("User");
-    console.log("Collection name: User");
 
-    // Log the exact query being performed
-    console.log("Querying with:", { email });
-
-    // const users = client.db("Surgery-Status").collection("User");
     const user = await users.findOne({ email });
     console.log("Raw user result:", user);
-    console.log("User found:", !!user);
 
     if (!user) {
       // Let's also try to see what users exist
@@ -54,7 +41,10 @@ async function getUser(email: string): Promise<User | undefined> {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  adapter: MongoDBAdapter(client),
+  session: {
+    strategy: "jwt",
+  },
+  // adapter: MongoDBAdapter(client),  // this is for database session strategy, not JWT.
   providers: [
     Credentials({
       async authorize(credentials) {

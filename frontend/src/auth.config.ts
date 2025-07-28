@@ -9,6 +9,8 @@ export const authConfig = {
   callbacks: {
     // Include role in JWT token
     jwt({ token, user }) {
+      // console.log("jwt callback in auth.config.ts - token:", token);
+      // console.log("jwt callback in auth.config.ts - user:", user);
       if (user) {
         token.role = user.role;
       }
@@ -17,6 +19,8 @@ export const authConfig = {
 
     // Include role in session
     session({ session, token }) {
+      // console.log("session callback in auth.config.ts - session:", session);
+      // console.log("session callback in auth.config.ts - token:", token);
       if (token && session.user) {
         session.user.role = token.role as string;
       }

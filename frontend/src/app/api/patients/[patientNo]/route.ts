@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ patientNo: string }> }
 ) {
   console.log("CALLED");
-
+  console.log("AUTH_SECRET on server:", process.env.AUTH_SECRET ? "Loaded" : "Missing");
   const token = await getToken({
     req: request,
     secret: process.env.AUTH_SECRET,

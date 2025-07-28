@@ -19,7 +19,9 @@ const getSinglePatient = async (req, res) => {
   const patient = await Patient.findOne({ no: patientId });
 
   if (!patient) {
-    throw new CustomError.NotFoundError(`No Patient with patient number : ${patientId}`);
+    throw new CustomError.NotFoundError(
+      `No Patient with patient number : ${patientId}`
+    );
   }
 
   res.status(StatusCodes.OK).json({ patient });
@@ -51,10 +53,16 @@ const updatePatientStatus = async (req, res) => {
   );
 
   if (!patient) {
-    throw new CustomError.NotFoundError(`No Patient with patient number : ${patientId}`);
+    throw new CustomError.NotFoundError(
+      `No Patient with patient number : ${patientId}`
+    );
   }
-  if (status === 7) return; //Do nothing when patient status is dimissal
-  io.emit("updatePatientStatus", patient);
+  if (status === 7) {
+    //remove patient from status board when patient status is dimissal
+    io.emit("removePatientFromBoard", patient);
+  } else {
+    io.emit("updatePatientStatus", patient);
+  }
 
   res.status(StatusCodes.OK).json({ patient });
 };
@@ -68,6 +76,7 @@ const deletePatient = async (req, res) => {
   }
 
   await Patient.deleteOne({ _id: patientId });
+  io.emit("removePatientFromBoard", patient);
   res.status(StatusCodes.OK).json({ msg: "Success! Patient removed." });
 };
 const displayPatientStatus = async (req, res) => {

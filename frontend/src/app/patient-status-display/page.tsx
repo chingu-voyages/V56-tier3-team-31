@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import {
   addPaitentToStatusBoard,
   displayPatientStatus,
+  removePatientFromStatusBoard,
   updatePaitentStatusBoard,
 } from "@/lib/features/patients/patientSlice";
 import { socket } from "@/util/socket";
@@ -23,9 +24,15 @@ export default function Page() {
 
       dispatch(addPaitentToStatusBoard(patient));
     });
+    socket.on("removePatientFromBoard", (patient) => {
+      console.log("removePatientFromBoard");
+      dispatch(removePatientFromStatusBoard(patient));
+    });
+
     return () => {
       socket.off("updatePatientStatus");
       socket.off("addPatientStatus");
+      socket.off("removePatientFromBoard");
     };
   }, []);
 

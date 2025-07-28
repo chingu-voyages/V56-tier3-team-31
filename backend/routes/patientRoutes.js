@@ -12,9 +12,11 @@ const {
   updatePatientStatus,
   updatePatient,
   deletePatient,
+  displayPatientStatus,
 } = require("../controllers/patientController");
 
 router.route("/").post(createPatient).get(getAllPatients);
+router.route("/displayPatientStatus").get(displayPatientStatus);
 router.route("/updatePatientStatus/:id").patch(updatePatientStatus);
 
 router

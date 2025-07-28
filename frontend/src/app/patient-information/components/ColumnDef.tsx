@@ -24,9 +24,9 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "no",
     header: "No.",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="capitalize">{row.getValue("no")}</div>,
   },
   {
     accessorKey: "firstName",

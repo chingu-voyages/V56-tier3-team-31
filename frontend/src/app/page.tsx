@@ -1,3 +1,4 @@
+import { SocketIo } from "@/components";
 import LoginForm from "@/components/loginForm";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
@@ -35,6 +36,7 @@ export default function Home() {
           </Suspense>
         </div>
       </div>
+      <SocketIo />
     </main>
   );
 }

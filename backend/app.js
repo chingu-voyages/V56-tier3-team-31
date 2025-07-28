@@ -1,9 +1,9 @@
 require("dotenv").config();
 require("express-async-errors");
 // express
-
+const { app, server } = require("./lib/socket");
 const express = require("express");
-const app = express();
+
 // rest of the packages
 const cookieParser = require("cookie-parser");
 const rateLimiter = require("express-rate-limit");
@@ -69,7 +69,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
     console.log("Connected to the database...");
-    app.listen(port, () =>
+    server.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
   } catch (error) {

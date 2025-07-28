@@ -1,6 +1,6 @@
 import { getToken } from "next-auth/jwt";
 import jwt from "jsonwebtoken";
-import cookie from "cookie";
+import * as cookie from "cookie";
 
 export async function GET(
   request: Request,

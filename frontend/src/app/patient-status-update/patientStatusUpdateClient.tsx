@@ -5,6 +5,7 @@ import PatientSearchForm from "@/components/patientSearchForm";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { updatePatientStatus } from "@/lib/actions";
+import { Patient } from "@/types/db";
 import React, { useActionState, useEffect, useRef, useState } from "react";
 
 interface PatientStatusUpdateClientProps {
@@ -15,7 +16,9 @@ const PatientStatusUpdateClient = ({
   patientNoFromURL,
 }: PatientStatusUpdateClientProps) => {
   const [loading, setLoading] = useState(false);
-  const [patientInfo, setPatientInfo] = useState<any>(null);
+  const [patientInfo, setPatientInfo] = useState<Omit<Patient, "_id"> | null>(
+    null
+  );
   const [error, setError] = useState<string | null>(null);
 
   const initialLoadDone = useRef(false);

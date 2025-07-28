@@ -1,12 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  ArrowUpDown,
-  Delete,
-  MoreHorizontal,
-  Pencil,
-  Trash,
-} from "lucide-react";
-
+import { ArrowUpDown } from "lucide-react";
 export const columns: ColumnDef<(typeof data)[number]>[] = [
   {
     id: "select",
@@ -31,9 +24,9 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "no",
     header: "No.",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="capitalize">{row.getValue("no")}</div>,
   },
   {
     accessorKey: "firstName",
@@ -148,21 +141,41 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-
+  {
+    accessorKey: "status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <ArrowUpDown />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const statusId = row.getValue("status");
+      const currentStatus = patientStatuses.find(
+        (status) => status.id === statusId
+      );
+      return (
+        <span className={`${currentStatus?.color} px-2 py-1 rounded`}>
+          {currentStatus?.name}
+        </span>
+      );
+    },
+  },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const data = row.original;
 
       return (
         <div className="gap-2 flex items-center">
-          <DialogTrigger asChild>
-            <Button variant="secondary" size="icon" className="size-6">
-              <Pencil />
-            </Button>
-          </DialogTrigger>
-          <DeleteModal />
+          <PatientModal mode="edit" patient={data} />
+          <DeleteModal patient={data} />
         </div>
       );
     },
@@ -170,14 +183,7 @@ export const columns: ColumnDef<(typeof data)[number]>[] = [
 ];
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 import { data } from "./mockData";
-import { DialogTrigger } from "@/components/ui/dialog";
 import DeleteModal from "./DeleteModal";
+import PatientModal from "./PatientModal";
+import { patientStatuses } from "@/util";

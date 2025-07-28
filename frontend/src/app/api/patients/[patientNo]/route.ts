@@ -12,6 +12,7 @@ export async function GET(
     req: request,
     secret: process.env.AUTH_SECRET,
   });
+  console.log(token);
 
   if (!token) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
@@ -45,7 +46,7 @@ export async function GET(
 
   try {
     const response = await fetch(
-      `http://localhost:8000/api/v1/patients/${patientNo}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/patients/${patientNo}`,
       {
         headers: {
           Cookie: cookieHeader,

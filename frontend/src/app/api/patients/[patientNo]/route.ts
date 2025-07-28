@@ -11,6 +11,7 @@ export async function GET(
     "NEXTAUTH_SECRET on server:",
     process.env.NEXTAUTH_SECRET ? "Loaded" : "Missing"
   );
+  console.log(request);
 
   const token = await getToken({
     req: request,

@@ -10,7 +10,7 @@ export async function GET(
   console.log("AUTH_SECRET on server:", process.env.AUTH_SECRET ? "Loaded" : "Missing");
   const token = await getToken({
     req: request,
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
   });
   console.log(token);
 

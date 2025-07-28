@@ -75,7 +75,7 @@ const PatientStatusUpdateClient = ({
             )}
             <div className="flex justify-end space-x-2 mt-8">
               <Button type="submit" disabled={isUpdatePending}>
-                Save Changes
+                {isUpdatePending ? "Saving..." : "Save Changes"}
               </Button>
             </div>
           </form>

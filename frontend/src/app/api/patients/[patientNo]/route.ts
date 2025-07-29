@@ -12,13 +12,16 @@ export async function GET(
     process.env.NEXTAUTH_SECRET ? "Loaded" : "Missing"
   );
   console.log(request);
-
+  const cookieKey =
+    process.env.NODE_ENV === "production"
+      ? "__Secure-authjs.session-token"
+      : "authjs.session-token";
   const token = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
+    salt: cookieKey,
+    cookieName: cookieKey,
   });
-  console.log(token);
-
   if (!token) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }

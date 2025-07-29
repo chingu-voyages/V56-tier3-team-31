@@ -53,7 +53,7 @@ export async function updatePatientStatus(
 
   try {
     const response = await fetch(
-      `http://localhost:8000/api/v1/patients/updatePatientStatus/${patientNumber}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/patients/updatePatientStatus/${patientNumber}`,
       {
         method: "PATCH",
         headers: {

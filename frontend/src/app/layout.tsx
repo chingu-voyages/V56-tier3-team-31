@@ -4,7 +4,7 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
-
+import ChatWidget from "@/components/ChatWidget";
 const geist = Geist({
   subsets: ["latin"],
 });
@@ -31,6 +31,7 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           {children}
+          <ChatWidget />
         </StoreProvider>
       </body>
     </html>

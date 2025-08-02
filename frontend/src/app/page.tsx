@@ -2,6 +2,7 @@ import { SocketIo } from "@/components";
 import LoginForm from "@/components/loginForm";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -23,9 +24,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-[600px] flex-col space-y-2.5 p-4">
-        <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-          <div className="max-w-[400px] mx-auto">
+      <div className="relative mx-auto flex w-full max-w-[800px] flex-col space-y-2.5 p-4 lg:flex-row">
+        <Image
+          src="/eyecatch.jpg"
+          alt=""
+          width={320}
+          height={480}
+          className="rounded-lg rounded-tr-none rounded-br-none mx-auto m-4 max-w-[640px] hidden lg:block"
+          aria-hidden
+        />
+        <div className="flex-1 rounded-lg rounded-tl-none rounded-bl-none bg-gray-50 px-6 pb-4 pt-8 lg:h-[480px] lg:my-4 lg:flex items-center">
+          <div className="max-w-[400px] mx-auto flex-1">
             <Link href="/patient-status-display">
               <Button className="mt-4 w-full">
                 Proceed as Guest

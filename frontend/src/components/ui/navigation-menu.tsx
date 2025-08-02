@@ -52,7 +52,7 @@ function NavigationMenuItem({
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
-      className={cn("relative flex flex-wrap", className)}
+      className={cn("relative flex flex-wrap w-full", className)}
       {...props}
     />
   );

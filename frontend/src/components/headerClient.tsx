@@ -15,6 +15,7 @@ import Nav from "./nav";
 import { signOutAction } from "@/lib/actions";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface HeaderClientProps {
   userRole: "admin" | "member" | null;
@@ -25,9 +26,15 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const isBiggerThanMdScreen = useMediaQuery("(min-width: 768px)");
+
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
+    if (isBiggerThanMdScreen) {
+      setIsMenuOpen(true);
+    } else {
+      setIsMenuOpen(false);
+    }
+  }, [pathname, isBiggerThanMdScreen]);
 
   return (
     <div className="flex flex-col items-center">
@@ -42,7 +49,7 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
       </Link>
 
       <Button
-        className="m-1 cursor-pointer"
+        className="m-1 cursor-pointer md:hidden"
         variant={"ghost"}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
@@ -52,11 +59,11 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
 
       {isMenuOpen && (
         <NavigationMenu className="w-full max-w-none first:w-full">
-          <NavigationMenuList className="grid grid-cols-1 sm:grid-cols-6">
+          <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap">
             <Nav userRole={userRole} pathname={pathname} />
 
             {isAuthenticated && (
-              <NavigationMenuItem className="sm:col-start-4 sm:col-end-7 sm:row-start-1 sm:row-end-2">
+              <NavigationMenuItem className="sm:basis-[49%] sm:order-2">
                 <NavigationMenuLink
                   asChild
                   className={navigationMenuTriggerStyle()}

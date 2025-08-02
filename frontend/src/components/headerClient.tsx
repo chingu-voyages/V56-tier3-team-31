@@ -37,13 +37,13 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
   }, [pathname, isBiggerThanMdScreen]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center md:flex-row md:gap-4">
       <Link href={"/"} className="block">
         <Image
           src="/header-logo.png"
           alt="surgery status board"
-          width={150}
-          height={150}
+          width={120}
+          height={120}
           className="rounded-lg mx-auto m-4"
         />
       </Link>
@@ -59,11 +59,11 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
 
       {isMenuOpen && (
         <NavigationMenu className="w-full max-w-none first:w-full">
-          <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap">
+          <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap">
             <Nav userRole={userRole} pathname={pathname} />
 
             {isAuthenticated && (
-              <NavigationMenuItem className="sm:basis-[49%] sm:order-2">
+              <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
                 <NavigationMenuLink
                   asChild
                   className={navigationMenuTriggerStyle()}

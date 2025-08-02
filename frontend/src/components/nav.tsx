@@ -16,7 +16,7 @@ interface NavProps {
 const Nav = ({ userRole, pathname }: NavProps) => {
   return (
     <>
-      <NavigationMenuItem>
+      <NavigationMenuItem className="sm:col-start-1 sm:col-end-4 sm:row-start-1 sm:row-end-2">
         <NavigationMenuLink
           asChild
           data-active={pathname === "/"}
@@ -33,7 +33,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
         </NavigationMenuLink>
       </NavigationMenuItem>
 
-      <NavigationMenuItem>
+      <NavigationMenuItem className="sm:col-start-1 sm:col-end-3 sm:row-start-2 sm:row-end-3">
         <NavigationMenuLink
           asChild
           data-active={pathname === "/patient-status-display"}
@@ -52,7 +52,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
       </NavigationMenuItem>
 
       {userRole && (
-        <NavigationMenuItem>
+        <NavigationMenuItem className="sm:col-start-3 sm:col-end-5 sm:row-start-2 sm:row-end-3">
           <NavigationMenuLink
             asChild
             data-active={pathname === "/patient-status-update"}
@@ -72,7 +72,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
       )}
 
       {userRole === "admin" && (
-        <NavigationMenuItem>
+        <NavigationMenuItem className="sm:col-start-5 sm:col-end-7 sm:row-start-2 sm:row-end-3">
           <NavigationMenuLink
             asChild
             data-active={pathname === "/patient-information"}

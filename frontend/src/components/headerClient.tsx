@@ -30,8 +30,8 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
   }, [pathname]);
 
   return (
-    <div className="text-center">
-      <Link href={"/"}>
+    <div className="flex flex-col items-center">
+      <Link href={"/"} className="block">
         <Image
           src="/header-logo.png"
           alt="surgery status board"
@@ -52,11 +52,11 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
 
       {isMenuOpen && (
         <NavigationMenu className="w-full max-w-none first:w-full">
-          <NavigationMenuList className="grid grid-cols-1">
+          <NavigationMenuList className="grid grid-cols-1 sm:grid-cols-6">
             <Nav userRole={userRole} pathname={pathname} />
 
             {isAuthenticated && (
-              <NavigationMenuItem>
+              <NavigationMenuItem className="sm:col-start-4 sm:col-end-7 sm:row-start-1 sm:row-end-2">
                 <NavigationMenuLink
                   asChild
                   className={navigationMenuTriggerStyle()}

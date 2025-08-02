@@ -7,7 +7,11 @@ const Header = async () => {
   console.log("Session in Header:", session);
   const userRole = session?.user?.role;
 
-  return <HeaderClient userRole={userRole} isAuthenticated={!!session} />;
+  return (
+    <header>
+      <HeaderClient userRole={userRole} isAuthenticated={!!session} />
+    </header>
+  );
 };
 
 export default Header;

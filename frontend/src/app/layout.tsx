@@ -26,16 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geist.className} ${geistMono.className} antialiased`}
-      >
+      <body className={`${geist.className} ${geistMono.className} antialiased`}>
         <Toaster />
         <StoreProvider>
-          <div className="px-4 max-w-[900px] mx-auto">
-            <header className="mb-4">
-              <Header />
-            </header>
-            {children}
+          <Header />
+          {children}
+          <div className="bg-amber-400">
+            <footer className=""></footer>
           </div>
         </StoreProvider>
       </body>

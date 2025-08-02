@@ -37,49 +37,51 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
   }, [pathname, isBiggerThanMdScreen]);
 
   return (
-    <div className="flex flex-col items-center md:flex-row md:gap-4">
-      <Link href={"/"} className="block">
-        <Image
-          src="/header-logo.png"
-          alt="surgery status board"
-          width={120}
-          height={120}
-          className="rounded-lg mx-auto m-4"
-        />
-      </Link>
+    <div className={`${pathname === "/" ? "bg-gray-50" : "bg-white"}`}>
+      <div className="flex flex-col items-center md:flex-row md:gap-4 container">
+        <Link href={"/"} className="block">
+          <Image
+            src="/header-logo.png"
+            alt="surgery status board"
+            width={120}
+            height={120}
+            className="rounded-lg mx-auto m-4"
+          />
+        </Link>
 
-      <Button
-        className="m-1 cursor-pointer md:hidden"
-        variant={"ghost"}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <Menu />
-        Menu
-      </Button>
+        <Button
+          className="m-1 cursor-pointer md:hidden"
+          variant={"ghost"}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <Menu />
+          Menu
+        </Button>
 
-      {isMenuOpen && (
-        <NavigationMenu className="w-full max-w-none first:w-full">
-          <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap">
-            <Nav userRole={userRole} pathname={pathname} />
+        {isMenuOpen && (
+          <NavigationMenu className="w-full max-w-none first:w-full pb-2 md:pb-0">
+            <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap">
+              <Nav userRole={userRole} pathname={pathname} />
 
-            {isAuthenticated && (
-              <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle()}
-                >
-                  <form
-                    className="cursor-pointer hover:font-bold"
-                    action={signOutAction}
+              {isAuthenticated && (
+                <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
+                  <NavigationMenuLink
+                    asChild
+                    className={navigationMenuTriggerStyle()}
                   >
-                    <button className="cursor-pointer">Log Out</button>
-                  </form>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            )}
-          </NavigationMenuList>
-        </NavigationMenu>
-      )}
+                    <form
+                      className="cursor-pointer hover:font-bold"
+                      action={signOutAction}
+                    >
+                      <button className="cursor-pointer">Log Out</button>
+                    </form>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
+        )}
+      </div>
     </div>
   );
 };

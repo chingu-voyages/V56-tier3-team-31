@@ -14,9 +14,37 @@ interface NavProps {
 }
 
 const Nav = ({ userRole, pathname }: NavProps) => {
+  const classNames = {
+    home: "",
+    patientStatusDisplay: "",
+    patientStatusUpdate: "",
+    patientInformation: "",
+  };
+
+  switch (userRole) {
+    case "admin":
+      classNames.home = "sm:basis-[49%]";
+      classNames.patientStatusDisplay = "sm:basis-[32%] sm:order-3";
+      classNames.patientStatusUpdate = "sm:basis-[32%] sm:order-4";
+      classNames.patientInformation = "sm:basis-[32%] sm:order-5";
+      break;
+    case "member":
+      classNames.home = "sm:basis-[49%]";
+      classNames.patientStatusDisplay = "sm:basis-[49%] sm:order-3";
+      classNames.patientStatusUpdate = "sm:basis-[49%] sm:order-4";
+      classNames.patientInformation = "";
+      break;
+    default:
+      classNames.home = "sm:basis-[49%]";
+      classNames.patientStatusDisplay = "sm:basis-[49%]";
+      classNames.patientStatusUpdate = "";
+      classNames.patientInformation = "";
+      break;
+  }
+
   return (
     <>
-      <NavigationMenuItem className="sm:basis-[49%]">
+      <NavigationMenuItem className={classNames.home}>
         <NavigationMenuLink
           asChild
           data-active={pathname === "/"}
@@ -33,7 +61,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
         </NavigationMenuLink>
       </NavigationMenuItem>
 
-      <NavigationMenuItem className="sm:basis-[32%] sm:order-3">
+      <NavigationMenuItem className={classNames.patientStatusDisplay}>
         <NavigationMenuLink
           asChild
           data-active={pathname === "/patient-status-display"}
@@ -52,7 +80,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
       </NavigationMenuItem>
 
       {userRole && (
-        <NavigationMenuItem className="sm:basis-[32%] sm:order-4">
+        <NavigationMenuItem className={classNames.patientStatusUpdate}>
           <NavigationMenuLink
             asChild
             data-active={pathname === "/patient-status-update"}
@@ -72,7 +100,7 @@ const Nav = ({ userRole, pathname }: NavProps) => {
       )}
 
       {userRole === "admin" && (
-        <NavigationMenuItem className="sm:basis-[32%] sm:order-5">
+        <NavigationMenuItem className={classNames.patientInformation}>
           <NavigationMenuLink
             asChild
             data-active={pathname === "/patient-information"}

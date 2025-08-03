@@ -49,6 +49,19 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
           />
         </Link>
 
+        <p className="text-center md:hidden text-sm my-2">
+          {isAuthenticated
+            ? `Logged in as: 
+              ${
+                userRole === "admin"
+                  ? "Admin"
+                  : userRole === "member"
+                  ? "Team Member"
+                  : "#N/A"
+              }`
+            : "Guest User"}
+        </p>
+
         <Button
           className="m-1 cursor-pointer md:hidden"
           variant={"ghost"}
@@ -59,27 +72,48 @@ const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
         </Button>
 
         {isMenuOpen && (
-          <NavigationMenu className="w-full max-w-none first:w-full pb-2 md:pb-0">
-            <NavigationMenuList className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap">
-              <Nav userRole={userRole} pathname={pathname} />
+          <div className="flex flex-col w-full pb-2 md:pb-0 md:justify-end gap-4 md:gap-2">
+            <p className="hidden md:block md:text-end text-sm md:mr-2">
+              {isAuthenticated
+                ? `Logged in as: 
+              ${
+                userRole === "admin"
+                  ? "Admin"
+                  : userRole === "member"
+                  ? "Team Member"
+                  : "#N/A"
+              }`
+                : "Guest User"}
+            </p>
 
-              {isAuthenticated && (
-                <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
-                  <NavigationMenuLink
-                    asChild
-                    className={navigationMenuTriggerStyle()}
-                  >
-                    <form
-                      className="cursor-pointer hover:font-bold"
-                      action={signOutAction}
+            <NavigationMenu className="w-full max-w-none first:w-full md:justify-end">
+              <NavigationMenuList
+                className={`flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap ${
+                  isAuthenticated || "sm:flex-nowrap"
+                }`}
+              >
+                <Nav userRole={userRole} pathname={pathname} />
+
+                {isAuthenticated && (
+                  <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
+                    <NavigationMenuLink
+                      asChild
+                      className={`${navigationMenuTriggerStyle()} p-0`}
                     >
-                      <button className="cursor-pointer">Log Out</button>
-                    </form>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              )}
-            </NavigationMenuList>
-          </NavigationMenu>
+                      <form
+                        className="cursor-pointer hover:font-bold"
+                        action={signOutAction}
+                      >
+                        <button className="cursor-pointer w-full h-full px-4 py-2">
+                          Log Out
+                        </button>
+                      </form>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                )}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         )}
       </div>
     </div>

@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/patient-information/components/index.js",
-    "src/components/ChatContainter.jsx"
+    "src/components/ChatContainter.jsx",
+    "../backend/utils/gemini.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -34,8 +34,8 @@ const CreatorLink = ({ type, href }: CreatorLinkProps) => {
       <Image
         src={iconAttributes.src}
         alt={iconAttributes.alt}
-        width={35}
-        height={35}
+        width={30}
+        height={30}
       />
     </Link>
   );
@@ -49,7 +49,7 @@ interface CreatorProps {
 const Creator = ({ creatorName, links }: CreatorProps) => {
   return (
     <dd className="flex flex-col items-center gap-1 mb-2 lg:flex-row lg:gap-4">
-      <p className="text-lg">{creatorName}</p>
+      <p>{creatorName}</p>
       <div className="flex gap-4">
         {links.map((link, index) => (
           <CreatorLink key={index} type={link.type} href={link.href} />

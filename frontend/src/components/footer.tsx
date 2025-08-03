@@ -28,11 +28,11 @@ const Footer = () => {
         </Link>
 
         <div className="flex flex-col items-center lg:items-start">
-          <h6 className="text-2xl mt-4">Meet the Team</h6>
+          <h6 className="text-xl mt-4">Meet the Team</h6>
           <dl className="flex flex-col items-center gap-2 lg:items-start">
-            <dt className="text-xl mt-4">- Developers -</dt>
+            <dt className="text-lg mt-4">- Developers -</dt>
 
-            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 lg:flex-col lg:items-start lg:gap-2">
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-8 lg:flex-col lg:items-start lg:gap-2">
               {creatorsInfo.developers.map((dev, index) => (
                 <Creator
                   key={index}
@@ -42,7 +42,7 @@ const Footer = () => {
               ))}
             </div>
 
-            <dt className="text-xl mt-4">- Scrum Master -</dt>
+            <dt className="text-lg mt-4">- Scrum Master -</dt>
 
             {creatorsInfo.scrumMasters.map((dev, index) => (
               <Creator

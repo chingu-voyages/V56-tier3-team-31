@@ -1,0 +1,65 @@
+import { creatorsInfo } from "@/util/creatorsInfo";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import Creator from "./creator";
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#01357A] text-[#F4F6F8]">
+      <div className="flex flex-col items-center justify-between gap-4 p-4">
+        <Link
+          href={"https://github.com/chingu-voyages/V56-tier3-team-31"}
+          className="flex flex-col gap-2 items-center hover:underline hover:underline-offset-4 group my-4"
+          target="_blank"
+        >
+          <Image
+            src={"/icon_github.svg"}
+            alt="GitHub"
+            width={80}
+            height={80}
+            aria-hidden
+            className="pb-1 border-b-[1.5px] border-transparent group-hover:border-[#F4F6F8]"
+          />
+          <div className="flex flex-col items-center text-md">
+            <p>Project Repository</p>
+            <p>V56-tier3-team-31</p>
+          </div>
+        </Link>
+
+        <div className="">
+          <h6 className="text-2xl">Meet the Team</h6>
+          <dl className="flex flex-col items-center gap-2">
+            <dt className="text-xl mt-4">- Developers -</dt>
+
+            {creatorsInfo.developers.map((dev, index) => (
+              <Creator
+                key={index}
+                creatorName={dev.creatorName}
+                links={dev.links}
+              />
+            ))}
+
+            <dt className="text-xl mt-4">- Scrum Master -</dt>
+
+            {creatorsInfo.scrumMasters.map((dev, index) => (
+              <Creator
+                key={index}
+                creatorName={dev.creatorName}
+                links={dev.links}
+              />
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div className="bg-[#002B63] p-2 text-xs">
+        <p className="text-center">
+          © Copy Right 2025. All Rights Reserved. V56-tier3-team-31
+        </p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -4,6 +4,7 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -31,9 +32,7 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           {children}
-          <div className="bg-amber-400">
-            <footer className=""></footer>
-          </div>
+          <Footer />
         </StoreProvider>
       </body>
     </html>

@@ -48,7 +48,7 @@ interface CreatorProps {
 
 const Creator = ({ creatorName, links }: CreatorProps) => {
   return (
-    <dd className="flex flex-col items-center gap-1 mb-2">
+    <dd className="flex flex-col items-center gap-1 mb-2 lg:flex-row lg:gap-4">
       <p className="text-lg">{creatorName}</p>
       <div className="flex gap-4">
         {links.map((link, index) => (

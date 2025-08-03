@@ -7,10 +7,10 @@ import Creator from "./creator";
 const Footer = () => {
   return (
     <footer className="bg-[#01357A] text-[#F4F6F8]">
-      <div className="flex flex-col items-center justify-between gap-4 p-4">
+      <div className="flex flex-col items-center justify-between gap-4 p-4 sm:flex-row sm:justify-center sm:gap-16 lg:gap-32">
         <Link
           href={"https://github.com/chingu-voyages/V56-tier3-team-31"}
-          className="flex flex-col gap-2 items-center hover:underline hover:underline-offset-4 group my-4"
+          className="flex flex-col gap-2 items-center hover:underline hover:underline-offset-4 group my-4 lg:flex-row lg:gap-4"
           target="_blank"
         >
           <Image
@@ -21,24 +21,26 @@ const Footer = () => {
             aria-hidden
             className="pb-1 border-b-[1.5px] border-transparent group-hover:border-[#F4F6F8]"
           />
-          <div className="flex flex-col items-center text-md">
-            <p>Project Repository</p>
+          <div className="flex flex-col items-center text-md lg:items-start">
+            <p className="lg:text-xl">Project Repository</p>
             <p>V56-tier3-team-31</p>
           </div>
         </Link>
 
-        <div className="">
-          <h6 className="text-2xl">Meet the Team</h6>
-          <dl className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center lg:items-start">
+          <h6 className="text-2xl mt-4">Meet the Team</h6>
+          <dl className="flex flex-col items-center gap-2 lg:items-start">
             <dt className="text-xl mt-4">- Developers -</dt>
 
-            {creatorsInfo.developers.map((dev, index) => (
-              <Creator
-                key={index}
-                creatorName={dev.creatorName}
-                links={dev.links}
-              />
-            ))}
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 lg:flex-col lg:items-start lg:gap-2">
+              {creatorsInfo.developers.map((dev, index) => (
+                <Creator
+                  key={index}
+                  creatorName={dev.creatorName}
+                  links={dev.links}
+                />
+              ))}
+            </div>
 
             <dt className="text-xl mt-4">- Scrum Master -</dt>
 

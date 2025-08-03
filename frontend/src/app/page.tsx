@@ -8,7 +8,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <main className="flex flex-col md:h-screen">
+    <main className="flex flex-col">
       <div className="bg-gray-50 py-6">
         <div className="container">
           <h1 className="text-3xl my-4">Surgery Status Board</h1>

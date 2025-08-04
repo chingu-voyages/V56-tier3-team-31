@@ -5,16 +5,19 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { MessageSquareMore } from "lucide-react";
+import { MessageSquareMore, MessageSquareX } from "lucide-react";
 import ChatContainter from "./ChatContainter";
+import { useState } from "react";
 
 const ChatWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="fixed bottom-5 right-5">
-      <Popover>
+      <Popover onOpenChange={(state) => setIsOpen(state)}>
         <PopoverTrigger asChild>
           <Button style={{ borderRadius: 20 }} variant="default">
-            <MessageSquareMore />
+            {isOpen ? <MessageSquareX /> : <MessageSquareMore />}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-80">

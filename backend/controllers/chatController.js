@@ -8,6 +8,7 @@ const createChatResponse = async (req, res) => {
     model: "gemini-2.5-flash",
     contents: `${PROJECT_FAQ_CONTEXT.concat(" ", prompt)}`,
   });
+  console.log(response.text);
 
   res.status(StatusCodes.CREATED).json({ response: response.text });
 };

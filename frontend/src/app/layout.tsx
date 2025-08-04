@@ -5,6 +5,8 @@ import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
 import ChatWidget from "@/components/ChatWidget";
+import QueryProvider from "@/components/QueryProvider";
+
 const geist = Geist({
   subsets: ["latin"],
 });
@@ -31,9 +33,12 @@ export default function RootLayout({
       >
         <Toaster position="top-center" />
         <StoreProvider>
+          {" "}
           <Header />
           {children}
-          <ChatWidget />
+          <QueryProvider>
+            <ChatWidget />
+          </QueryProvider>
         </StoreProvider>
       </body>
     </html>

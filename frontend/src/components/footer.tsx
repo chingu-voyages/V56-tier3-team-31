@@ -57,7 +57,7 @@ const Footer = () => {
 
       <div className="bg-[#002B63] p-2 text-xs">
         <p className="text-center">
-          © Copy Right 2025. All Rights Reserved. V56-tier3-team-31
+          © Copyright 2025. All Rights Reserved. V56-tier3-team-31
         </p>
       </div>
     </footer>

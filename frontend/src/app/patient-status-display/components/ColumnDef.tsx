@@ -12,34 +12,7 @@ export const columns: ColumnDef<(typeof PatientType)[]>[] = [
     header: "No.",
     cell: ({ row }) => <div className="capitalize">{row.getValue("no")}</div>,
   },
-  {
-    accessorKey: "firstName",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          First Name
-          <ArrowUpDown />
-        </Button>
-      );
-    },
-  },
-  {
-    accessorKey: "lastName",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Last Name
-          <ArrowUpDown />
-        </Button>
-      );
-    },
-  },
+
   {
     accessorKey: "status",
     header: ({ column }) => {
@@ -65,20 +38,6 @@ export const columns: ColumnDef<(typeof PatientType)[]>[] = [
       );
     },
   },
-  //   {
-  //     id: "actions",
-  //     enableHiding: false,
-  //     cell: ({ row }) => {
-  //       const data = row.original;
-
-  //       return (
-  //         <div className="gap-2 flex items-center">
-  //           <PatientModal mode="edit" patient={data} />
-  //           <DeleteModal patient={data} />
-  //         </div>
-  //       );
-  //     },
-  //   },
 ];
 
 import { Button } from "@/components/ui/button";

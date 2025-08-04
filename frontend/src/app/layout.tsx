@@ -4,6 +4,10 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
+import ChatWidget from "@/components/ChatWidget";
+import QueryProvider from "@/components/QueryProvider";
+import Footer from "@/components/footer";
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -26,11 +30,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.className} ${geistMono.className} antialiased`}>
-        <Toaster />
+      <body
+        className={`relative ${geist.className} ${geistMono.className} antialiased`}
+      >
+        <Toaster position="top-center" />
         <StoreProvider>
+          {" "}
           <Header />
           {children}
+          <QueryProvider>
+            <ChatWidget />
+          </QueryProvider>
+          <Footer />
         </StoreProvider>
       </body>
     </html>

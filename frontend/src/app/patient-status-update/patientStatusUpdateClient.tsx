@@ -65,11 +65,11 @@ const PatientStatusUpdateClient = ({
     <>
       <PatientSearchForm onSearch={handleSearch} loading={loading} />
 
-      {loading && <Spinner className="mt-4" />}
-      {error && <div className="text-red-500 mt-4">{error}</div>}
+      {loading && <Spinner className="mt-8" />}
+      {error && <div className="text-red-500 mt-8">{error}</div>}
       {patientInfo && !loading && !error && (
         <>
-          <h2 className="text-2xl font-bold mt-6 mb-4">Patient Found:</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-4">Patient Found:</h2>
 
           <form action={updateFormAction}>
             <PatientForm isUpdateStatus={true} patientInfo={patientInfo} />

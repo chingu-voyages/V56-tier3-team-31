@@ -32,7 +32,7 @@ const PatientSearchForm = ({ onSearch, loading }: PatientSearchFormProps) => {
 
   return (
     <form
-      className="sm:flex gap-4"
+      className="flex flex-col sm:flex-row sm:gap-4"
       onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -53,7 +53,7 @@ const PatientSearchForm = ({ onSearch, loading }: PatientSearchFormProps) => {
       </div>
       <Button
         type="submit"
-        className="self-end mt-4 sm:mt-0"
+        className="self-end mt-3 sm:mt-0"
         disabled={loading}
       >
         {loading ? "Searching..." : "Search Patient"}

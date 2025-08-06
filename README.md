@@ -1,6 +1,20 @@
 # voyage-project-surgerystatus
 Chingu Voyage Project - Surgery Center Status Board
 [Project Requirements](https://github.com/chingu-voyages/voyage-project-surgerystatus)
+
+## Sign-in Criteria
+### Admin account
+```
+email: admin@email.com
+password: 123456
+```
+### Team Member account
+```
+email: teammember@email.com
+password: 123456
+```
+
+
 ## Overview
 
 Welcome, Chingus!

@@ -3,20 +3,32 @@
 Developed as a Chingu Voyage Project - Surgery Center Status Board
 [Project Requirements](https://github.com/chingu-voyages/voyage-project-surgerystatus)
 
-Surgery Status Board is a web platform for real-time surgical status tracking. This helps hospitals keep patients’ families informed and reduces uncertainty in waiting rooms. Guest users can view real-time surgical updates, surgical team members can update patient status throughout the procedure, and admins can register new patients and initiate tracking. Designed to ease emotional stress and improve communication during critical moments.
+Surgery Status Board is a web platform for real-time surgical status tracking. 
+
+This helps hospitals keep patients’ families informed and reduces uncertainty in waiting rooms. Guest users can view real-time surgical updates, surgical team members can update patient status throughout the procedure, and admins can register new patients and initiate tracking. Designed to ease emotional stress and improve communication during critical moments.
 
 ## Features
 
 1. **Real-time Patient Status Display**
+
    Allows guest users (e.g., family members) to view the patient's current surgical status in real time.
+
 2. **Surgical Status Updates**
+
    Enables surgical team members to update the patient's status throughout the procedure.
+
 3. **Patient Information Management**
+
    Provides admin users with tools to register new patients and initiate status tracking.
 
 ## Live Link
 
 https://v56-tier3-team-31.vercel.app/
+
+There are three types of users:
+1. guest users (NO sign-in required)
+2. surgical team member (sign-in required)
+3. admin (sign-in required)
 
 ### Sign-in Criteria - Admin account
 

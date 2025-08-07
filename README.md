@@ -1,70 +1,104 @@
-# voyage-project-surgerystatus
-Chingu Voyage Project - Surgery Center Status Board
+# Surgery Status Board
+
+Developed as a Chingu Voyage Project - Surgery Center Status Board
 [Project Requirements](https://github.com/chingu-voyages/voyage-project-surgerystatus)
 
-## Sign-in Criteria
-### Admin account
+Surgery Status Board is a web platform for real-time surgical status tracking. This helps hospitals keep patients’ families informed and reduces uncertainty in waiting rooms. Guest users can view real-time surgical updates, surgical team members can update patient status throughout the procedure, and admins can register new patients and initiate tracking. Designed to ease emotional stress and improve communication during critical moments.
+
+## Features
+
+1. **Real-time Patient Status Display**
+   Allows guest users (e.g., family members) to view the patient's current surgical status in real time.
+2. **Surgical Status Updates**
+   Enables surgical team members to update the patient's status throughout the procedure.
+3. **Patient Information Management**
+   Provides admin users with tools to register new patients and initiate status tracking.
+
+## Live Link
+
+https://v56-tier3-team-31.vercel.app/
+
+### Sign-in Criteria - Admin account
+
 ```
 email: admin@email.com
 password: 123456
 ```
-### Team Member account
+
+### Sign-in Criteria - Team Member account
+
 ```
 email: teammember@email.com
 password: 123456
 ```
 
+## Demo
 
-## Overview
+### Video
 
-Welcome, Chingus!
+### Screenshots (Desktop)
 
-It's inevitable that at some point in your life you or a loved one will have to undergo
-some type of surgery - either as an inpatient or an outpatient. In this event you or a
-companion, depending on who's having the surgery, will be in a hospital waiting room while
-the surgery is being performed.
+<table>
+  <thead>
+    <th>Home</th>
+    <th>Patient Status Dispay</th>
+    <th>Patient Status Update</th>
+    <th>Patient Information</th>
+  </thead>
+  <tr>
+    <td valign="top"><img src="frontend/public/readme-figures/desktop_home.png" alt="desktop home" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/desktop_status-display.png" alt="desktop patient status display" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/desktop_status-update.png" alt="desktop patient status update" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/desktop_patient-info.png" alt="desktop patient information" width=200/></td>
+  </tr>
+</table>
 
-It can be quite stressful on the person in the waiting room. But, this can be lessened by
-knowing how the surgery is progressing. Like many other activities there is a workflow
-associated with any medical procedure and knowing what state or phase the surgery is in 
-will help whoever is waiting to know what's going on.
+### Screenshots (Mobile)
 
-In this voyage, your team will design and build a web application, _Surgery Status Board_,
-that will track a patients progress and display it on a monitor in the waiting room.
+<table>
+  <thead>
+    <th>Home</th>
+    <th>Patient Status Dispay</th>
+    <th>Patient Status Update</th>
+    <th>Patient Information</th>
+  </thead>
+  <tr>
+    <td valign="top"><img src="frontend/public/readme-figures/mobile_home.png" alt="mobile home" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/mobile_status-display.png" alt="mobile patient status display" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/mobile_status-update.png" alt="mobile patient status update" width=200/></td>
+    <td valign="top"><img src="frontend/public/readme-figures/mobile_patient-info.png" alt="mobile patient information" width=200/></td>
+  </tr>
+</table>
 
-## Github workflow
-- git pull origin development
-- git checkout -b <YOUR OWN BRANCH>
-- git add -A
-- git commit -m 'message'
-- git push origin <YOUR OWN BRANCH>
-- Create a pull request into development branch
-- Review And Merge the code
-  
- ## Team Documents 
-You may find these helpful as you work together to organize your project.
+## Tech Stack
 
-- [Team Decision Log](./docs/team_decision_log.md)
+### Frontend
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+[![Frontend Tech Stack](https://skillicons.dev/icons?i=ts,nextjs,tailwind,redux)](https://skillicons.dev)
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+[Auth.js](https://authjs.dev/), [Zod](https://zod.dev/)
 
-- [Jira board](https://cestsa.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiZDJkMDg1NjFlMjU2NGVmMDllMDZjZWE2ZTI2YjAxMTEiLCJwIjoiaiJ9)
+### Backend
 
-## Our Team
+[![Backend Tech Stack](https://skillicons.dev/icons?i=nodejs,express,mongodb)](https://skillicons.dev)
 
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
+[Google Gemini API](https://ai.google.dev/), [Socket.IO](https://socket.io/)
 
-### Divelopers
-- VinhQua: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+### Hosting
+
+[![Hosting Tech Stack](https://skillicons.dev/icons?i=vercel)](https://skillicons.dev)
+
+### Others
+
+[![Other Tech Stack](https://skillicons.dev/icons?i=git,figma)](https://skillicons.dev)
+
+## Authors
+
+### Developers
+
+- VinhQua: [GitHub](https://github.com/VinhQua) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Sachi Asano: [GitHub](https://github.com/c-est-sa) / [LinkedIn](https://www.linkedin.com/in/sachi-sacha-asano/)
 
 ### Scrum Master
-- uday siddapur: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+
+- uday siddapur: [GitHub](https://github.com/udaysiddapur) / [LinkedIn](https://linkedin.com/in/liaccountname)

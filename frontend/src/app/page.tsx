@@ -15,11 +15,11 @@ export default function Home() {
           <h2 className="text-xl my-4">Your Peace of Mind, Our Priority</h2>
           <p className="mt-8 mb-4">
             We built the Surgery Status Board to ease the burden of uncertainty
-            and allow you to focus on what truly matters: supporting your
-            family. By providing clear, immediate information, we help reduce
-            the stress and worry that often come with hospital waiting rooms.
-            You can feel a sense of calm and confidence, knowing you&apos;re
-            always connected to their progress.
+            and help you focus on what truly matters: supporting your loved
+            ones. By providing clear, real-time information, we reduce the
+            stress and worry that often come with hospital waiting rooms. You
+            can feel a sense of calm and confidence, knowing you&apos;re always
+            connected to their progress.
           </p>
         </div>
       </div>

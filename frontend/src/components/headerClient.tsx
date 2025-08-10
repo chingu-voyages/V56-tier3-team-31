@@ -1,0 +1,123 @@
+"use client";
+
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import { Menu } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "./ui/navigation-menu";
+import Nav from "./nav";
+import { signOutAction } from "@/lib/actions";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import useMediaQuery from "@/hooks/useMediaQuery";
+
+interface HeaderClientProps {
+  userRole: "admin" | "member" | null;
+  isAuthenticated: boolean;
+}
+
+const HeaderClient = ({ userRole, isAuthenticated }: HeaderClientProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isBiggerThanMdScreen = useMediaQuery("(min-width: 768px)");
+
+  useEffect(() => {
+    if (isBiggerThanMdScreen) {
+      setIsMenuOpen(true);
+    } else {
+      setIsMenuOpen(false);
+    }
+  }, [pathname, isBiggerThanMdScreen]);
+
+  return (
+    <div className={`${pathname === "/" ? "bg-gray-50" : "bg-white"}`}>
+      <div className="flex flex-col items-center md:flex-row md:gap-4 container">
+        <Link href={"/"} className="block">
+          <Image
+            src="/header-logo.png"
+            alt="surgery status board"
+            width={120}
+            height={120}
+            className="rounded-lg mx-auto m-4"
+          />
+        </Link>
+
+        <p className="text-center md:hidden text-sm my-2">
+          {isAuthenticated
+            ? `Logged in as: 
+              ${
+                userRole === "admin"
+                  ? "Admin"
+                  : userRole === "member"
+                  ? "Team Member"
+                  : "#N/A"
+              }`
+            : "Guest User"}
+        </p>
+
+        <Button
+          className="m-1 cursor-pointer md:hidden"
+          variant={"ghost"}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <Menu />
+          Menu
+        </Button>
+
+        {isMenuOpen && (
+          <div className="flex flex-col w-full pb-2 md:pb-0 md:justify-end gap-4 md:gap-2">
+            <p className="hidden md:block md:text-end text-sm md:mr-2">
+              {isAuthenticated
+                ? `Logged in as: 
+              ${
+                userRole === "admin"
+                  ? "Admin"
+                  : userRole === "member"
+                  ? "Team Member"
+                  : "#N/A"
+              }`
+                : "Guest User"}
+            </p>
+
+            <NavigationMenu className="w-full max-w-none first:w-full md:justify-end">
+              <NavigationMenuList
+                className={`flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap ${
+                  isAuthenticated || "sm:flex-nowrap"
+                }`}
+              >
+                <Nav userRole={userRole} pathname={pathname} />
+
+                {isAuthenticated && (
+                  <NavigationMenuItem className="sm:basis-[49%] sm:order-2 lg:order-last">
+                    <NavigationMenuLink
+                      asChild
+                      className={`${navigationMenuTriggerStyle()} p-0`}
+                    >
+                      <form
+                        className="cursor-pointer hover:font-bold"
+                        action={signOutAction}
+                      >
+                        <button className="cursor-pointer w-full h-full px-4 py-2">
+                          Log Out
+                        </button>
+                      </form>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                )}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default HeaderClient;

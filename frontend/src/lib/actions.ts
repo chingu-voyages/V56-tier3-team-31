@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { patientStatuses } from "@/util";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -27,6 +27,10 @@ export async function authenticate(
     }
     throw error;
   }
+}
+
+export async function signOutAction() {
+  await signOut({ redirectTo: "/" });
 }
 
 export async function updatePatientStatus(

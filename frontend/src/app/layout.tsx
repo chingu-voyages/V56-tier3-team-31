@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header";
 import ChatWidget from "@/components/ChatWidget";
 import QueryProvider from "@/components/QueryProvider";
+import Footer from "@/components/footer";
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -39,6 +41,7 @@ export default function RootLayout({
           <QueryProvider>
             <ChatWidget />
           </QueryProvider>
+          <Footer />
         </StoreProvider>
       </body>
     </html>

@@ -59,8 +59,13 @@ export const authConfig = {
           return Response.redirect(new URL("/patient-status-display", nextUrl));
         }
 
-        if (!isOnStatusDisplay && !isOnStatusUpdate && !isOnPatientInfo) {
-          return Response.redirect(new URL("/patient-status-display", nextUrl));
+        if (
+          !isOnStatusDisplay &&
+          !isOnStatusUpdate &&
+          !isOnPatientInfo &&
+          !(nextUrl.pathname === "/")
+        ) {
+          return Response.redirect(new URL("/", nextUrl));
         }
 
         return true; // member can access status display and update

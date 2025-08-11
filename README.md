@@ -3,7 +3,9 @@
 Developed as a Chingu Voyage Project - Surgery Center Status Board
 [Project Requirements](https://github.com/chingu-voyages/voyage-project-surgerystatus)
 
-Surgery Status Board is a web platform for real-time surgical status tracking. 
+---
+
+**Surgery Status Board is a web platform for real-time surgical status tracking.**
 
 This helps hospitals keep patients’ families informed and reduces uncertainty in waiting rooms. Guest users can view real-time surgical updates, surgical team members can update patient status throughout the procedure, and admins can register new patients and initiate tracking. Designed to ease emotional stress and improve communication during critical moments.
 
@@ -46,8 +48,12 @@ password: 123456
 
 ## Demo
 
-### [Video](https://youtu.be/lqfvEJ6t8Co?si=B-TMbKbDVQQ1vWFi)
+### Video
 https://youtu.be/lqfvEJ6t8Co?si=B-TMbKbDVQQ1vWFi
+
+<a href="https://youtu.be/lqfvEJ6t8Co">
+  <img src="https://img.youtube.com/vi/lqfvEJ6t8Co/maxresdefault.jpg" alt="Watch the demo video" width="400" />
+</a>
 
 ### Screenshots (Desktop)
 

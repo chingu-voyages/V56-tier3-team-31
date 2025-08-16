@@ -59,8 +59,13 @@ export default function LoginForm() {
         </div>
       </div>
       <input type="hidden" name="redirectTo" value={callbackUrl} />
-      <Button className="mt-4 w-full" aria-disabled={isPending}>
-        Log in <MoveRight className="ml-auto h-5 w-5 text-gray-50" />
+      <Button
+        className="mt-4 w-full"
+        aria-disabled={isPending}
+        disabled={isPending}
+      >
+        {isPending ? "Logging in..." : "Log in"}
+        <MoveRight className="ml-auto h-5 w-5 text-gray-50" />
       </Button>
       <div
         className="flex h-8 items-end space-x-1"
